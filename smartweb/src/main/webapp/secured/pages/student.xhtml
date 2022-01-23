@@ -9,20 +9,20 @@
 
     <h:body>
         <ui:composition template="../templatesUI.xhtml">
-            <ui:define name="pageTitle">Staff Account</ui:define>
-            <ui:define name="subText">Add New Staff</ui:define>
+            <ui:define name="pageTitle">Student</ui:define>
+            <ui:define name="subText">Add New Student</ui:define>
             <ui:define name="pageContent">
                 <h:panelGroup id="mainPanel">
                     <div class="card mb-5">
                         <div class="container-fluid">
-                            <div class="card-header">Add New #{msg.staff}</div>
+                            <div class="card-header">Add New #{msg.student}</div>
                             <h:panelGroup rendered="#{staffAccountController.pageView.listView}">
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-lg-12">
                                         <h:form style="margin-bottom: 5px;">
 
                                             <div class="pull-right py-2">
-                                                <h:commandButton value="#{msg.new} #{msg.staff}" class="btn btn-outline-primary btn-sm"
+                                                <h:commandButton value="#{msg.new} #{msg.student}" class="btn btn-outline-primary btn-sm"
                                                                  action="#{staffAccountController.initStaff()}">
                                                     <p:ajax update=":mainPanel"/>
                                                 </h:commandButton>
