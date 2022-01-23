@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition template="../../templatesUI.xhtml">
+            <ui:define name="pageTitle">Academic Level</ui:define>
+            <ui:define name="subText">Add Records</ui:define>
+            <ui:define name="pageContent">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h:form class="spaced-form">
+                            <h:panelGrid columns="2">
+                                <span>Level Name</span>
+                                <p:inputText />
+
+                                <p:commandButton class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
+                                <p:commandButton class="kbtn-success" value="#{msg.save}"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    <div class="col-md-8">
+                        <h:form>
+                            <p:dataTable>
+                                <p:column headerText="Level Name">
+
+                                </p:column>
+                                <p:column headerText="#{msg.action}" style="width: 120px;" exportable="false">
+                                    <p:menuButton value="#{msg.manage}">
+                                        <p:menuitem icon="fa fa-edit" class="text-info" value="#{msg.edit}" immediate="true"/>
+                                        <p:menuitem  icon="fa fa-remove" class="text-danger" value="#{msg.delete}" immediate="true"/>
+                                    </p:menuButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
