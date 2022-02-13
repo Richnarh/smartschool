@@ -1,5 +1,6 @@
 package com.khoders.smartschool.entities;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "courses")
-public class Course extends UserAccountRecord
+public class Course extends UserAccountRecord implements Serializable
 {
    @Column(name = "course_code")
    private String courseCode;
