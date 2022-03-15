@@ -1,17 +1,23 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.khoders.smartschool.smartweb.services;
 
-import com.khoders.smartschool.entities.setup.UserAccount;
 import com.khoders.resource.jpa.CrudApi;
 import static com.khoders.resource.utilities.SecurityUtil.hashText;
+import com.khoders.smartschool.entities.setup.UserAccount;
 import com.khoders.smartschool.smartweb.jbeans.AuthModel;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 
 /**
  *
- * @author richa
+ * @author Khoders
  */
+@Stateless
 public class AuthService
 {
     @Inject private CrudApi crudApi;

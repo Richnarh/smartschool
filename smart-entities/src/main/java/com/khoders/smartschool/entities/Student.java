@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Student extends UserAccountRecord
 {
    @Column(name = "admitted_date")
-   private LocalDate admittedDate = LocalDate.now();
+   private LocalDate admittedDate;
    
    @Column(name = "first_name")
    private String firstName;
@@ -50,9 +50,6 @@ public class Student extends UserAccountRecord
 
    @Column(name = "house_address")
    private String houseAddress;
-
-   @Column(name = "full_name")
-   private String fullName = firstName +" "+middleName +" "+otherName;
 
     public LocalDate getAdmittedDate()
     {
@@ -144,16 +141,6 @@ public class Student extends UserAccountRecord
         this.houseAddress = houseAddress;
     }
 
-    public String getFullName()
-    {
-        return fullName;
-    }
-
-    public void setFullName(String fullName)
-    { 
-        this.fullName = fullName;
-    }
-
     public String getGuardianContact()
     {
         return guardianContact;
@@ -162,6 +149,12 @@ public class Student extends UserAccountRecord
     public void setGuardianContact(String guardianContact)
     {
         this.guardianContact = guardianContact;
+    }
+
+    @Override
+    public String toString()
+    {
+        return firstName +" "+middleName +" "+otherName;
     }
 
 }

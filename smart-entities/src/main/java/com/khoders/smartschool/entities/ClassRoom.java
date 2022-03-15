@@ -66,4 +66,11 @@ public class ClassRoom extends UserAccountRecord implements Serializable
     {
         this.classPrefect = classPrefect;
     }
+
+    @Override
+    public String toString()
+    {
+        return className;
+    }
+    
 }

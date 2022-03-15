@@ -25,6 +25,10 @@ public class AcademicLevel extends UserAccountRecord
     {
         this.levelName = levelName;
     }
-    
-    
+
+    @Override
+    public String toString()
+    {
+        return levelName;
+    }
 }

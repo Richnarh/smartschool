@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="../templatesUI.xhtml">
+            <ui:define name="pageTitle">Academic Level</ui:define>
+            <ui:define name="pageContent">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h:form class="spaced-form" id="studentClassRoomForm">
+                                    <h:panelGrid columns="2">
+                                        <span>Student</span>
+                                        <p:selectOneMenu value="#{studentClassRoomController.studentClassRoom.student}" filter="true" filterMatchMode="contains">
+                                            <f:selectItem itemLabel="#{msg.choose}"/>
+                                            <f:selectItems value="#{userCommons.studentList}"/>
+                                        </p:selectOneMenu>
+
+                                        <span>Class Room</span>
+                                        <p:selectOneMenu value="#{studentClassRoomController.studentClassRoom.classRoom}" filter="true" filterMatchMode="contains">
+                                            <f:selectItem itemLabel="#{msg.choose}"/>
+                                            <f:selectItems value="#{userCommons.classRoomList}"/>
+                                        </p:selectOneMenu>
+
+                                        <p:commandButton action="#{studentClassRoomController.clearStudentClassRoom()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
+                                        <p:commandButton action="#{studentClassRoomController.saveStudentClassRoom()}"  class="kbtn-success" value="#{studentClassRoomController.optionText}" update="@form,:studentClassRoomTable"/>
+                                    </h:panelGrid>
+                                </h:form>
+                            </div>
+                            <div class="col-md-8">
+                                <h:form id="studentClassRoomTable">
+                                    <p:dataTable value="#{studentClassRoomController.studentClassRoomList}" var="studentClassRoom" paginator="true" rows="12" paginatorPosition="bottom">
+                                        <p:column headerText="Student">
+                                            <h:outputText value="#{studentClassRoom.student.fullName}"/>
+                                        </p:column>
+                                        <p:column headerText="class Room">
+                                            <h:outputText value="#{studentClassRoom.classRoom.className}"/>
+                                        </p:column>
+                                        <p:column headerText="#{msg.action}" style="width: 120px;" exportable="false">
+                                            <p:menuButton value="#{msg.manage}">
+                                                <p:menuitem action="#{studentClassRoomController.editStudentClassRoom(studentClassRoom)}" icon="fa fa-edit" class="text-info" value="#{msg.edit}" immediate="true" update=":studentClassRoomForm"/>
+                                                <p:menuitem action="#{studentClassRoomController.deleteStudentClassRoom(studentClassRoom)}" onclick="return confirm('#{msg.delete_message}')" icon="fa fa-remove" class="text-danger" value="#{msg.delete}" immediate="true" update="@form"/>
+                                            </p:menuButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

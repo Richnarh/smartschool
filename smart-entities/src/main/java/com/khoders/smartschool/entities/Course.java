@@ -21,10 +21,6 @@ public class Course extends UserAccountRecord implements Serializable
    @Column(name = "course_title")
    private String courseTitle;
    
-   @JoinColumn(name = "acadamic_level", referencedColumnName = "id")
-   @ManyToOne
-   private AcademicLevel academicLevel;
-
     public String getCourseCode()
     {
         return courseCode;
@@ -45,15 +41,9 @@ public class Course extends UserAccountRecord implements Serializable
         this.courseTitle = courseTitle;
     }
 
-    public AcademicLevel getAcademicLevel()
+    @Override
+    public String toString()
     {
-        return academicLevel;
+        return courseTitle;
     }
-
-    public void setAcademicLevel(AcademicLevel academicLevel)
-    {
-        this.academicLevel = academicLevel;
-    }
-   
-   
 }

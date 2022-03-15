@@ -3,13 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>#{msg.title} | Login</title> 
+        <title>#{msg.title} - ADMIN</title> 
         <link rel="icon" href="#{application.contextPath}/assets/images/favicon.ico" type="image/x-icon"/>
         <!-- Google font-->     
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"/>
@@ -20,7 +19,6 @@
         <link rel="stylesheet" href="#{application.contextPath}/assets/pages/waves/css/waves.min.css" type="text/css" media="all"/>
         <link rel="stylesheet" type="text/css" href="#{application.contextPath}/assets/icon/feather/css/feather.css"/>
         <!-- themify-icons line icon -->
-        <!--<link rel="stylesheet" type="text/css" href="{application.contextPath}/assets/icon/themify-icons/themify-icons.css"/>-->
         <!-- ico font -->
         <link rel="stylesheet" type="text/css" href="#{application.contextPath}/assets/css/font-awesome-n.min.css"/>
         <!-- Font Awesome -->
@@ -29,7 +27,25 @@
         <link rel="stylesheet" type="text/css" href="#{application.contextPath}/assets/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="#{application.contextPath}/assets/css/widget.css"/>
         <link rel="stylesheet" type="text/css" href="#{application.contextPath}/assets/css/main.css"/>
-
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
+        
+        <style>
+            .page-header.card {
+                margin: 9px 15px 8px !important;
+            }
+            .pcoded-inner-content {
+                padding: 0px !important;
+            }
+            .card .card-header{
+                padding: 10px !important;
+            }
+            
+            .btn-sm {
+                padding: 5px 10px !important;
+                font-size: 11px !important;
+                line-height: 16px !important;
+        }
+        </style>
     </h:head>
 
     <h:body>
@@ -51,30 +67,32 @@
                         </h:panelGroup>
 
                         <div class="pcoded-content">
-                            <div class="page-header card">
+                            <div class="page-header card card-border-info">
                                 <div class="row align-items-end">
                                     <div class="col-lg-8">
                                         <div class="page-header-title">
-                                            <i class="feather icon-home bg-c-blue"></i>
+                                            <!--<i class="feather icon-home bg-c-blue"></i>-->
                                             <div class="d-inline">
                                                 <h5>
                                                     <ui:insert name="pageTitle">
                                                         Default Title
                                                     </ui:insert>
                                                 </h5>
-                                                <span>
+<!--                                                <span>
                                                     <ui:insert name="subText">
                                                         Default sub text
                                                     </ui:insert>
-                                                </span>
+                                                </span>-->
                                             </div>
                                         </div>
+                                        
                                     </div>
+                                    
                                     <div class="col-lg-4">
                                         <div class="page-header-breadcrumb">
                                             <ul class=" breadcrumb breadcrumb-title">
                                                 <li class="breadcrumb-item">
-                                                    <a href="index.html"><i class="feather icon-home"></i></a>
+                                                    <a href="#{application.contextPath}/secured/index.xhtml"><i class="feather icon-home"></i></a>
                                                 </li>
                                                 <li class="breadcrumb-item">
                                                     <a href="#!">
@@ -88,6 +106,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr/>
                             <div class="pcoded-inner-content">
                                 <div class="main-body">
                                     <div class="page-wrapper">
@@ -114,25 +133,25 @@
         </div>
 
 
-        <script type="text/javascript" src="#{application.contextPath}/assets/bower_components/jquery/js/jquery.min.js"></script>
-        <script type="text/javascript" src="#{application.contextPath}/assets/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="#{application.contextPath}/assets/bower_components/popper.js/js/popper.min.js"></script>
+        <!--<script type="text/javascript" src="{application.contextPath}/assets/bower_components/jquery/js/jquery.min.js"></script>-->
+        <!--<script type="text/javascript" src="{application.contextPath}/assets/bower_components/jquery-ui/js/jquery-ui.min.js"></script>-->
+        <!--<script type="text/javascript" src="{application.contextPath}/assets/bower_components/popper.js/js/popper.min.js"></script>-->
         <script type="text/javascript" src="#{application.contextPath}/assets/bower_components/bootstrap/js/bootstrap.min.js"></script>
         <!-- waves js -->
         <script src="#{application.contextPath}/assets/pages/waves/js/waves.min.js"></script>
         <!-- jquery slimscroll js -->
         <script type="text/javascript" src="#{application.contextPath}/assets/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
         <!-- Float Chart js -->
-        <script src="#{application.contextPath}/assets/pages/chart/float/jquery.flot.js"></script>
-        <script src="#{application.contextPath}/assets/pages/chart/float/jquery.flot.categories.js"></script>
-        <script src="#{application.contextPath}/assets/pages/chart/float/curvedLines.js"></script>
-        <script src="#{application.contextPath}/assets/pages/chart/float/jquery.flot.tooltip.min.js"></script>
-        <!-- Chartlist charts -->
-        <script src="#{application.contextPath}/assets/bower_components/chartist/js/chartist.js"></script>
+<!--        <script src="{application.contextPath}/assets/pages/chart/float/jquery.flot.js"></script>
+        <script src="{application.contextPath}/assets/pages/chart/float/jquery.flot.categories.js"></script>
+        <script src="{application.contextPath}/assets/pages/chart/float/curvedLines.js"></script>
+        <script src="{application.contextPath}/assets/pages/chart/float/jquery.flot.tooltip.min.js"></script>
+         Chartlist charts 
+        <script src="{application.contextPath}/assets/bower_components/chartist/js/chartist.js"></script>-->
         <!-- amchart js -->
-        <script src="#{application.contextPath}/assets/pages/widget/amchart/amcharts.js"></script>
-        <script src="#{application.contextPath}/assets/pages/widget/amchart/serial.js"></script>
-        <script src="#{application.contextPath}/assets/pages/widget/amchart/light.js"></script>
+<!--        <script src="{application.contextPath}/assets/pages/widget/amchart/amcharts.js"></script>
+        <script src="{application.contextPath}/assets/pages/widget/amchart/serial.js"></script>
+        <script src="{application.contextPath}/assets/pages/widget/amchart/light.js"></script>-->
         <!-- Custom js -->
         <script src="#{application.contextPath}/assets/js/pcoded.min.js"></script>
         <script src="#{application.contextPath}/assets/js/vertical/vertical-layout.min.js"></script>

@@ -6,9 +6,8 @@ com\khoders\smartschool\entities\TeacherSubject.class
 com\khoders\smartschool\entities\AcademicLevel.class
 com\khoders\smartschool\entities\Course.class
 com\khoders\smartschool\entities\ExamsReport.class
-com\khoders\smartschool\entities\setup\StaffAccount.class
 com\khoders\smartschool\entities\Fees.class
 com\khoders\smartschool\entities\StudentClassRoom.class
 com\khoders\smartschool\entities\UserAccountRecord.class
-com\khoders\smartschool\entities\ReferenceNo.class
 com\khoders\smartschool\entities\ClassRoom.class
+com\khoders\smartschool\entities\RefNo.class

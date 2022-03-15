@@ -9,8 +9,11 @@
     <class>com.khoders.smartschool.entities.Student</class>
     <class>com.khoders.smartschool.entities.StudentClassRoom</class>
     <class>com.khoders.smartschool.entities.TeacherSubject</class>
-    <class>com.khoders.smartschool.entities.setup.StaffAccount</class>
     <class>com.khoders.smartschool.entities.setup.UserAccount</class>
+    <class>com.khoders.smartschool.entities.ExamsReport</class>
+    <class>com.khoders.smartschool.entities.Fees</class>
+    <class>com.khoders.smartschool.entities.FeesType</class>
+    <class>com.khoders.smartschool.entities.TerminalReport</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

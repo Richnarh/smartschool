@@ -36,7 +36,7 @@
     </application>
     
      <lifecycle>
-        <!--<phase-listener>com.khoders.pos.listener.SessionListener</phase-listener>-->
+        <phase-listener>com.khoders.smartschool.smartweb.listener.SessionListener</phase-listener>
     </lifecycle>
     
 </faces-config>

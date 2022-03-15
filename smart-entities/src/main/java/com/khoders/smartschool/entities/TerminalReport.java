@@ -43,7 +43,7 @@ public class TerminalReport extends UserAccountRecord implements Serializable{
     @Column(name = "attendace_gained")
     private int attendaceGained;
     
-    @Column(name = "promoted_to")
+    @JoinColumn(name = "promoted_to", referencedColumnName = "id")
     @ManyToOne
     private AcademicLevel promotedTo;
     
