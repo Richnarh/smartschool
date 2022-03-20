@@ -12,6 +12,7 @@ import com.khoders.resource.utilities.Msg;
 import com.khoders.resource.utilities.SystemUtils;
 import com.khoders.smartschool.entities.ClassRoom;
 import com.khoders.smartschool.entities.StudentClassRoom;
+import com.khoders.smartschool.smartweb.listener.AppSession;
 import com.khoders.smartschool.smartweb.services.StudentService;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -31,6 +32,7 @@ public class StudentClassRoomController implements Serializable
 {
     @Inject private CrudApi crudApi;
     @Inject private StudentService studentService;
+    @Inject private AppSession appSession;
     
     private FormView pageView = FormView.listForm();
     private StudentClassRoom studentClassRoom = new StudentClassRoom();
@@ -70,6 +72,7 @@ public class StudentClassRoomController implements Serializable
     public void editStudentClassRoom(StudentClassRoom studentClassRoom)
     {
         this.studentClassRoom = studentClassRoom;
+        selectedClassRoom = studentClassRoom.getClassRoom();
         optionText = "Update";
     }
 
@@ -91,7 +94,7 @@ public class StudentClassRoomController implements Serializable
     public void clearStudentClassRoom()
     {
         studentClassRoom = new StudentClassRoom();
-        selectedClassRoom = null;
+        studentClassRoom.setUserAccount(appSession.getCurrentUser());
         optionText = "Save Changes";
         SystemUtils.resetJsfUI();
     }

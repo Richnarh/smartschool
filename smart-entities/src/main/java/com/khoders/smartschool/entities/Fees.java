@@ -31,9 +31,6 @@ public class Fees extends UserAccountRecord implements Serializable
     @Column(name = "fees_amount")
     private double feesAmount;
     
-    @Column(name = "amount_remaining")
-    private double amountRemaining;
-
     public FeesType getFeesType() {
         return feesType;
     }
@@ -58,12 +55,4 @@ public class Fees extends UserAccountRecord implements Serializable
         this.feesAmount = feesAmount;
     }
 
-    public double getAmountRemaining() {
-        return amountRemaining;
-    }
-
-    public void setAmountRemaining(double amountRemaining) {
-        this.amountRemaining = amountRemaining;
-    }
-    
 }

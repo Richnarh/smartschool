@@ -9,7 +9,7 @@
 
     <h:body>
         <ui:composition template="../templatesUI.xhtml">
-            <ui:define name="pageTitle">Academic Level</ui:define>
+            <ui:define name="pageTitle">Link student to classes</ui:define>
             <ui:define name="pageContent">
                 <div class="card">
                     <div class="card-body">
@@ -26,15 +26,14 @@
                                         
                                         <h:outputText class="field-shade" value="#{studentClassRoomController.selectedClassRoom.className}"/>
 
-                                        <p:dataTable value="#{studentController.studentList}" var="student">
-                                            <p:column headerText="Check" style="width: 30px;">
-                                                <p:selectBooleanCheckbox/>
-                                            </p:column>
-                                            <p:column headerText="Student" filterBy="#{student.middleName}">
-                                                <h:outputText value="#{student.firstName} #{student.middleName}  #{student.otherName}"/>
-                                            </p:column>
-                                        </p:dataTable>
+                                        <span>Student</span>
+                                        <p:selectOneMenu value="#{studentClassRoomController.studentClassRoom.student}" filter="true" filterMatchMode="contains">
+                                            <f:selectItem itemLabel="#{msg.choose}"/>
+                                            <f:selectItems value="#{userCommons.studentList}"/>
+                                        </p:selectOneMenu>
+                                        
                                     </h:panelGrid>
+                                    <hr/>
                                         <p:commandButton action="#{studentClassRoomController.clearStudentClassRoom()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
                                         <p:commandButton action="#{studentClassRoomController.saveStudentClassRoom()}"  class="kbtn-success" value="#{studentClassRoomController.optionText}" update="@form,:studentClassRoomTable"/>
                                 </h:form>
@@ -43,7 +42,12 @@
                                 <h:form id="studentClassRoomTable">
                                     <p:dataTable value="#{studentClassRoomController.studentClassRoomList}" var="studentClassRoom" paginator="true" rows="12" paginatorPosition="bottom">
                                         <p:column headerText="Student">
-                                            <h:outputText value="#{studentClassRoom.student}"/>
+                                            <h:outputText value="
+                                                          #{studentClassRoom.student.firstName} 
+                                                          #{studentClassRoom.student.middleName} 
+                                                          #{studentClassRoom.student.otherName} - 
+                                                          #{studentClassRoom.student.studentId}
+                                                          "/>
                                         </p:column>
                                         <p:column headerText="class Room">
                                             <h:outputText value="#{studentClassRoom.classRoom.className}"/>

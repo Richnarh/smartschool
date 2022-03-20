@@ -10,7 +10,6 @@
     <h:body>
         <ui:composition template="../templatesUI.xhtml">
             <ui:define name="pageTitle">Student</ui:define>
-            <!--<ui:define name="subText">Add New Student</ui:define>-->
             <ui:define name="pageContent">
                 <h:panelGroup id="mainPanel">
                     <div class="card mb-5">
@@ -39,6 +38,9 @@
 
                                         <p:rowExpansion>
                                             <h:panelGrid columns="2">
+                                                <span>Student ID</span>
+                                                <h:outputText value="#{student.studentId}"/>
+                                                
                                                 <span>First Name</span>
                                                 <h:outputText value="#{student.firstName}"/>
 
@@ -65,6 +67,10 @@
                                             <h:outputText value="#{student.admittedDate}">
                                                 <f:convertDateTime pattern="#{msg.formatted_date}" type="localDate"/>
                                             </h:outputText>
+                                        </p:column>
+
+                                        <p:column headerText="Student ID">
+                                            #{student.studentId}
                                         </p:column>
 
                                         <p:column headerText="Full Name">
@@ -98,6 +104,9 @@
                                     <h:form class="spaced-form">
                                         <h:panelGrid columns="4">
 
+                                            <span>Student ID</span>
+                                            <p:inputText value="#{studentController.student.studentId}" required="true"/>
+
                                             <span>Admission Date</span>
                                             <p:datePicker value="#{studentController.student.admittedDate}" pattern="#{msg.formatted_date}" yearNavigator="true" monthNavigator="true"/>
 
@@ -116,6 +125,12 @@
                                                 <f:selectItems value="{commonOption.genderList}"/>
                                             </p:selectOneMenu>-->
 
+<!--                                            <span>Status</span>
+                                            <p:selectOneMenu value="{studentController.student.studentStatus}">
+                                                <f:selectItem itemLabel="{msg.choose}"/>
+                                                <f:selectItems value="{commonClass.studentStatusList}"/>
+                                            </p:selectOneMenu>-->
+                                            
                                             <span>#{msg.level}</span>
                                             <p:selectOneMenu value="#{studentController.student.academicLevel}">
                                                 <f:selectItem itemLabel="#{msg.choose}"/>

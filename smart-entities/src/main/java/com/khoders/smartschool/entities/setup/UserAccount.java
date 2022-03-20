@@ -20,11 +20,11 @@ import javax.persistence.Table;
 @Table(name = "user_account")
 public class UserAccount extends RefNo
 {
-    @Column(name = "school_name")
-    private String schoolName;
-
     @Column(name = "phone_number")
     private String phoneNumber;
+    
+    @Column(name = "staff_no")
+    private String staffNo;
 
     @Column(name = "email_address")
     private String emailAddress;
@@ -61,16 +61,6 @@ public class UserAccount extends RefNo
 
     @Column(name = "password")
     private String password;
-
-    public String getSchoolName()
-    {
-        return schoolName;
-    }
-
-    public void setSchoolName(String schoolName)
-    {
-        this.schoolName = schoolName;
-    }
 
     public String getPhoneNumber()
     {
@@ -192,11 +182,19 @@ public class UserAccount extends RefNo
         this.password = password;
     }
 
+    public String getStaffNo()
+    {
+        return staffNo;
+    }
+
+    public void setStaffNo(String staffNo)
+    {
+        this.staffNo = staffNo;
+    }
+
     @Override
     public String toString()
     {
-        return username;
+        return username +" "+staffNo;
     }
-
-    
 }

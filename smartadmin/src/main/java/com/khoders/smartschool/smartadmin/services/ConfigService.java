@@ -11,6 +11,7 @@ import com.khoders.smartschool.entities.ClassRoom;
 import com.khoders.smartschool.entities.Course;
 import com.khoders.smartschool.entities.FeesType;
 import com.khoders.smartschool.entities.Student;
+import com.khoders.smartschool.entities.setup.UserAccount;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -38,5 +39,8 @@ public class ConfigService
     }
     public List<Student> studentList(){
         return crudApi.getEm().createQuery("SELECT e FROM Student e ORDER BY e.createdDate ASC", Student.class).getResultList(); 
+    }
+    public List<UserAccount> userAccountList(){
+        return crudApi.getEm().createQuery("SELECT e FROM UserAccount e ORDER BY e.createdDate ASC", UserAccount.class).getResultList(); 
     }
 }

@@ -6,6 +6,7 @@
 package com.khoders.smartschool.smartweb.commons;
 
 import com.khoders.resource.enums.Gender;
+import com.khoders.smartschool.enums.StudentStatus;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -16,11 +17,14 @@ import javax.inject.Named;
  *
  * @author richa
  */
-@Named(value = "commonOption")
+@Named(value = "commonClass")
 @SessionScoped
-public class CommonOption implements Serializable
+public class CommonClass implements Serializable
 {
     public List<Gender> genderList(){
         return Arrays.asList(Gender.values());
+    }
+    public List<StudentStatus> StudentStatusList(){
+        return Arrays.asList(StudentStatus.values());
     }
 }

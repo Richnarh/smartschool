@@ -1,11 +1,14 @@
 com\khoders\smartschool\entities\TerminalReport.class
 com\khoders\smartschool\entities\FeesType.class
+com\khoders\smartschool\entities\School.class
 com\khoders\smartschool\entities\setup\UserAccount.class
 com\khoders\smartschool\entities\Student.class
 com\khoders\smartschool\entities\TeacherSubject.class
 com\khoders\smartschool\entities\AcademicLevel.class
 com\khoders\smartschool\entities\Course.class
 com\khoders\smartschool\entities\ExamsReport.class
+com\khoders\smartschool\enums\StudentStatus.class
+com\khoders\smartschool\entities\FeesPayment.class
 com\khoders\smartschool\entities\Fees.class
 com\khoders\smartschool\entities\StudentClassRoom.class
 com\khoders\smartschool\entities\UserAccountRecord.class

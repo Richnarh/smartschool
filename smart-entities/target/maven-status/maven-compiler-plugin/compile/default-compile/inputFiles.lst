@@ -1,5 +1,6 @@
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\StudentClassRoom.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\FeesType.java
+C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\School.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\TerminalReport.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\ExamsReport.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\TeacherSubject.java
@@ -9,5 +10,7 @@ C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartsc
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\Course.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\setup\UserAccount.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\Fees.java
+C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\FeesPayment.java
+C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\enums\StudentStatus.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\Student.java
 C:\khoders\java-web\smartschool\smart-entities\src\main\java\com\khoders\smartschool\entities\UserAccountRecord.java

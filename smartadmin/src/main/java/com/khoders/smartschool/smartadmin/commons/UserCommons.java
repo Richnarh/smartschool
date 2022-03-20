@@ -7,8 +7,10 @@ package com.khoders.smartschool.smartadmin.commons;
 
 import com.khoders.smartschool.entities.AcademicLevel;
 import com.khoders.smartschool.entities.ClassRoom;
+import com.khoders.smartschool.entities.Course;
 import com.khoders.smartschool.entities.FeesType;
 import com.khoders.smartschool.entities.Student;
+import com.khoders.smartschool.entities.setup.UserAccount;
 import com.khoders.smartschool.smartadmin.services.ConfigService;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -30,6 +32,8 @@ public class UserCommons implements Serializable
     private List<AcademicLevel> academicLevelList = new LinkedList<>();
     private List<ClassRoom> classRoomList = new LinkedList<>();
     private List<FeesType> feesTypeList = new LinkedList<>();
+    private List<Course> courseList = new LinkedList<>();
+    private List<UserAccount> userAccountList = new LinkedList<>();
     
     @PostConstruct
     public void init(){
@@ -37,6 +41,8 @@ public class UserCommons implements Serializable
        academicLevelList = configService.getAcademicLevelList();
        classRoomList = configService.getClassRoomList();
        feesTypeList = configService.getFeesTypeList();
+       courseList = configService.courseList();
+       userAccountList = configService.userAccountList();
     }
 
     public List<Student> getStudentList()
@@ -57,6 +63,16 @@ public class UserCommons implements Serializable
     public List<FeesType> getFeesTypeList()
     {
         return feesTypeList;
+    }
+
+    public List<Course> getCourseList()
+    {
+        return courseList;
+    }
+
+    public List<UserAccount> getUserAccountList()
+    {
+        return userAccountList;
     }
     
 }
