@@ -11,6 +11,7 @@ import com.khoders.smartschool.entities.ClassRoom;
 import com.khoders.smartschool.entities.Course;
 import com.khoders.smartschool.entities.FeesType;
 import com.khoders.smartschool.entities.Student;
+import com.khoders.smartschool.entities.TeacherSubject;
 import com.khoders.smartschool.entities.setup.UserAccount;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -37,6 +38,7 @@ public class ConfigService
     public List<Course> courseList(){
         return crudApi.getEm().createQuery("SELECT e FROM Course e ORDER BY e.createdDate ASC", Course.class).getResultList(); 
     }
+    
     public List<Student> studentList(){
         return crudApi.getEm().createQuery("SELECT e FROM Student e ORDER BY e.createdDate ASC", Student.class).getResultList(); 
     }

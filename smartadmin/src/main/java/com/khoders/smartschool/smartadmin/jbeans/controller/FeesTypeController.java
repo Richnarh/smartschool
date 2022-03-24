@@ -47,7 +47,7 @@ public class FeesTypeController implements Serializable
             if(crudApi.save(feesType) != null)
             {
                 feesTypeList = CollectionList.washList(feesTypeList, feesType);
-                Msg.success("Fees type Saved");
+                Msg.info("Fees type Saved");
             }
             clearFeesType();
         } catch (Exception e)
@@ -65,7 +65,7 @@ public class FeesTypeController implements Serializable
         {
             if(crudApi.delete(feesType)){
                 feesTypeList.remove(feesType);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {

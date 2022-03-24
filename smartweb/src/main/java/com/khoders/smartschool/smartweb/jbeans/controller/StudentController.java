@@ -55,7 +55,7 @@ public class StudentController implements Serializable
             if (crudApi.save(student) != null)
             {
                 studentList = CollectionList.washList(studentList, student);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             closePage();
         } catch (Exception e)
@@ -77,7 +77,7 @@ public class StudentController implements Serializable
             if (crudApi.delete(student))
             {
                 studentList.remove(student);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {

@@ -5,6 +5,7 @@
  */
 package com.khoders.smartschool.smartadmin.commons;
 
+import com.khoders.resource.enums.AccessLevel;
 import com.khoders.resource.enums.Title;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -20,5 +21,8 @@ public class CommonOption implements Serializable
 {
     public List<Title> getTitleList(){
         return Arrays.asList(Title.values());
+    }
+    public List<AccessLevel> getAccessLevelList(){
+        return Arrays.asList(AccessLevel.values());
     }
 }

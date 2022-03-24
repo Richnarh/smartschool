@@ -11,6 +11,7 @@ import com.khoders.resource.utilities.FormView;
 import com.khoders.resource.utilities.Msg;
 import com.khoders.resource.utilities.SystemUtils;
 import com.khoders.smartschool.entities.ClassRoom;
+import com.khoders.smartschool.entities.StudentClass;
 import com.khoders.smartschool.entities.StudentClassRoom;
 import com.khoders.smartschool.smartweb.listener.AppSession;
 import com.khoders.smartschool.smartweb.services.StudentService;
@@ -38,6 +39,9 @@ public class StudentClassRoomController implements Serializable
     private StudentClassRoom studentClassRoom = new StudentClassRoom();
     private List<StudentClassRoom> studentClassRoomList = new LinkedList<>();
     private ClassRoom selectedClassRoom = null;
+    
+    private StudentClass studentClass = new StudentClass();
+    private List<StudentClass> studentClassList = new LinkedList<>();
 
     private String optionText;
 
@@ -60,7 +64,7 @@ public class StudentClassRoomController implements Serializable
             if (crudApi.save(studentClassRoom) != null)
             {
                 studentClassRoomList = CollectionList.washList(studentClassRoomList, studentClassRoom);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             clearStudentClassRoom();
         } catch (Exception e)
@@ -83,12 +87,60 @@ public class StudentClassRoomController implements Serializable
             if (crudApi.delete(studentClassRoom))
             {
                 studentClassRoomList.remove(studentClassRoom);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {
            e.printStackTrace();
         }
+    }
+    
+    public void manageStudentClass(StudentClassRoom studentClassRoom)
+    {
+       studentClassList = studentService.studentClassList(studentClassRoom);
+    }
+    
+    public void saveStudentClass()
+    {
+        try
+        {
+            if(crudApi.save(studentClass) != null)
+            {
+                studentClassList = CollectionList.washList(studentClassList, studentClass);
+                Msg.info(Msg.SUCCESS_MESSAGE);
+            }
+            clearStudentClass();
+        } catch (Exception e)
+        {
+           e.printStackTrace();
+        }
+    }
+    
+    public void editStudentClass(StudentClass studentClass)
+    {
+        this.studentClass = studentClass; 
+    }
+    
+    public void deleteStudentClass(StudentClass studentClass)
+    {
+        try
+        {
+           if(crudApi.save(studentClass))
+           {
+              studentClassList.remove(studentClass);
+              Msg.info(Msg.DELETE_MESSAGE);
+           }
+        } catch (Exception e)
+        {
+          e.printStackTrace();
+        }
+    }
+    
+    public void clearStudentClass()
+    {
+      studentClass = new StudentClass();
+      optionText = "Update";
+      SystemUtils.resetJsfUI();
     }
 
     public void clearStudentClassRoom()
@@ -97,6 +149,14 @@ public class StudentClassRoomController implements Serializable
         studentClassRoom.setUserAccount(appSession.getCurrentUser());
         optionText = "Save Changes";
         SystemUtils.resetJsfUI();
+    }
+    
+    public void closePage()
+    {
+       clearStudentClass(); 
+       clearStudentClassRoom();
+       
+       pageView.restToListView();
     }
     
     public StudentClassRoom getStudentClassRoom()
@@ -137,6 +197,21 @@ public class StudentClassRoomController implements Serializable
     public void setSelectedClassRoom(ClassRoom selectedClassRoom)
     {
         this.selectedClassRoom = selectedClassRoom;
+    }
+
+    public StudentClass getStudentClass()
+    {
+        return studentClass;
+    }
+
+    public void setStudentClass(StudentClass studentClass)
+    {
+        this.studentClass = studentClass;
+    }
+
+    public List<StudentClass> getStudentClassList()
+    {
+        return studentClassList;
     }
     
 }

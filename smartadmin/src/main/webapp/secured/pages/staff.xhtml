@@ -10,6 +10,7 @@
     <h:body>
         <ui:composition template="../templatesUI.xhtml">
             <ui:define name="pageTitle">Staff Account</ui:define>
+            <ui:define name="subText">Create Staff Account</ui:define>
             <ui:define name="pageContent">
                 <h:panelGroup id="mainPanel">
                     <div class="card mb-5">
@@ -122,8 +123,14 @@
                                             <span>Username</span>
                                             <p:inputText value="#{staffController.staff.username}"/>
                                             
+                                            <span>Access Level</span>
+                                            <p:selectOneMenu value="#{staffController.staff.accessLevel}">
+                                                <f:selectItem itemLabel="#{msg.choose}"/>
+                                                <f:selectItems value="#{commonOption.accessLevelList}"/>
+                                            </p:selectOneMenu>
+                                            
                                             <span>Password</span>
-                                            <h:inputSecret value="#{staffController.staff.password}"/>
+                                            <h:inputSecret class="form-control" value="#{staffController.staff.password}"/>
 
                                         </h:panelGrid>
 

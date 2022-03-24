@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.khoders.smartschool.smartweb.jbeans.converter;
+package com.khoders.smartschool.smartadmin.jbeans.converter;
 
-import com.khoders.smartschool.entities.setup.UserAccount;
+import com.khoders.smartschool.entities.Course;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.FacesConverter;
@@ -15,8 +15,8 @@ import org.omnifaces.converter.SelectItemsConverter;
  *
  * @author richa
  */
-@FacesConverter(forClass = UserAccount.class)
-public class UserAccountConverter extends SelectItemsConverter 
+@FacesConverter(forClass = Course.class)
+public class CourseConverter extends SelectItemsConverter 
 {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value)
@@ -25,6 +25,6 @@ public class UserAccountConverter extends SelectItemsConverter
         {
             return null;
         }
-        return ((UserAccount) value).getId();
+        return ((Course) value).getId();
     }  
 }

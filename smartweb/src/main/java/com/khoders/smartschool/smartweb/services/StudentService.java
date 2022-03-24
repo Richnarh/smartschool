@@ -9,6 +9,7 @@ import com.khoders.resource.jpa.CrudApi;
 import com.khoders.smartschool.entities.Fees;
 import com.khoders.smartschool.entities.FeesPayment;
 import com.khoders.smartschool.entities.Student;
+import com.khoders.smartschool.entities.StudentClass;
 import com.khoders.smartschool.entities.StudentClassRoom;
 import com.khoders.smartschool.smartweb.listener.AppSession;
 import java.util.Collections;
@@ -45,6 +46,22 @@ public class StudentService
         {
            TypedQuery<FeesPayment> typedQuery = crudApi.getEm().createQuery("SELECT e FROM FeesPayment e WHERE e.fees=?1", FeesPayment.class);
                             typedQuery.setParameter(1, fees);
+                            
+                            return  typedQuery.getResultList();
+           
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
+    public List<StudentClass> studentClassList(StudentClassRoom studentClassRoom)
+    {
+        try
+        {
+           TypedQuery<StudentClass> typedQuery = crudApi.getEm().createQuery("SELECT e FROM StudentClass e WHERE e.studentClassRoom=?1", StudentClass.class);
+                            typedQuery.setParameter(1, studentClassRoom);
                             
                             return  typedQuery.getResultList();
            

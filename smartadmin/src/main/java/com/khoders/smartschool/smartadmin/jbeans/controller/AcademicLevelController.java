@@ -47,7 +47,7 @@ public class AcademicLevelController implements Serializable
             if(crudApi.save(academicLevel) != null)
             {
                 academicLevelList = CollectionList.washList(academicLevelList, academicLevel);
-                Msg.success("Academic Level Saved");
+                Msg.info("Academic Level Saved");
             }
             clearAcademicLevel();
         } catch (Exception e)
@@ -65,7 +65,7 @@ public class AcademicLevelController implements Serializable
         {
             if(crudApi.delete(academicLevel)){
                 academicLevelList.remove(academicLevel);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {

@@ -10,6 +10,7 @@ import com.khoders.resource.utilities.CollectionList;
 import com.khoders.resource.utilities.FormView;
 import com.khoders.resource.utilities.Msg;
 import com.khoders.resource.utilities.SystemUtils;
+import com.khoders.smartschool.entities.SchoolSubject;
 import com.khoders.smartschool.entities.TeacherSubject;
 import com.khoders.smartschool.entities.setup.UserAccount;
 import com.khoders.smartschool.smartadmin.services.AppService;
@@ -35,7 +36,10 @@ public class TeacherCourseRoomController implements Serializable
     private FormView pageView = FormView.listForm();
     private TeacherSubject teacherSubject = new TeacherSubject();
     private List<TeacherSubject> teacherSubjectList = new LinkedList<>();
-    private UserAccount selectedUserAccount = null;
+    private UserAccount selectTeacher = null;
+    
+    private SchoolSubject schoolSubject = new SchoolSubject();
+    private List<SchoolSubject> schoolSubjectList = new LinkedList<>();
 
     private String optionText;
 
@@ -46,8 +50,8 @@ public class TeacherCourseRoomController implements Serializable
         teacherSubjectList = appService.teacherSubjectList();
     }
     
-    public void selectedAccount(){
-        selectedUserAccount = teacherSubject.getUserAccount();
+    public void selectedStaff(){
+        selectTeacher = teacherSubject.getUserAccount();
         System.out.println("selected -- ");
     }
     
@@ -58,7 +62,7 @@ public class TeacherCourseRoomController implements Serializable
             if (crudApi.save(teacherSubject) != null)
             {
                 teacherSubjectList = CollectionList.washList(teacherSubjectList, teacherSubject);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             clearTeacherSubject();
         } catch (Exception e)
@@ -80,19 +84,79 @@ public class TeacherCourseRoomController implements Serializable
             if (crudApi.delete(teacherSubject))
             {
                 teacherSubjectList.remove(teacherSubject);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {
            e.printStackTrace();
         }
     }
-
+    
+    public void manageSchoolSubject(TeacherSubject teacherSubject){
+        this.teacherSubject = teacherSubject;
+        selectTeacher = teacherSubject.getUserAccount();
+        pageView.restToCreateView();
+        schoolSubjectList = appService.schoolSubjectList(teacherSubject);
+    }
+    
+    public void saveSchoolSubject()
+    {
+        try
+        {
+            schoolSubject.setTeacherSubject(teacherSubject);
+            if(crudApi.save(schoolSubject) != null)
+            {
+                schoolSubjectList = CollectionList.washList(schoolSubjectList, schoolSubject);
+                Msg.info(Msg.SUCCESS_MESSAGE);
+            }
+            clearSchoolSubject();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void editSchoolSubject(SchoolSubject schoolSubject)
+    {
+        this.schoolSubject = schoolSubject;
+        optionText = "Update";
+        SystemUtils.resetJsfUI();
+    }
+    
+    public void deleteSchoolSubject(SchoolSubject schoolSubject)
+    {
+        try
+        {
+            if (crudApi.delete(schoolSubject))
+            {
+                schoolSubjectList.remove(schoolSubject);
+                Msg.info(Msg.DELETE_MESSAGE);
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     public void clearTeacherSubject()
     {
         teacherSubject = new TeacherSubject();
         optionText = "Save Changes";
         SystemUtils.resetJsfUI();
+    }
+    
+    public void clearSchoolSubject()
+    {
+        schoolSubject = new SchoolSubject();
+        optionText = "Save Changes";
+        SystemUtils.resetJsfUI();
+    }
+    
+    public void closePage(){
+        clearSchoolSubject();
+        clearTeacherSubject();
+        schoolSubjectList = new LinkedList<>();
+        pageView.restToListView();
     }
     
     public TeacherSubject getTeacherSubject()
@@ -125,14 +189,27 @@ public class TeacherCourseRoomController implements Serializable
         this.pageView = pageView;
     }
 
-    public UserAccount getSelectedUserAccount()
-    {
-        return selectedUserAccount;
+    public UserAccount getSelectTeacher() {
+        return selectTeacher;
     }
 
-    public void setSelectedUserAccount(UserAccount selectedUserAccount)
+    public void setSelectTeacher(UserAccount selectTeacher) {
+        this.selectTeacher = selectTeacher;
+    }
+
+    public SchoolSubject getSchoolSubject()
     {
-        this.selectedUserAccount = selectedUserAccount;
+        return schoolSubject;
+    }
+
+    public void setSchoolSubject(SchoolSubject schoolSubject)
+    {
+        this.schoolSubject = schoolSubject;
+    }
+
+    public List<SchoolSubject> getSchoolSubjectList()
+    {
+        return schoolSubjectList;
     }
     
 }

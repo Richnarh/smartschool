@@ -20,16 +20,30 @@
                                 <h:form>
                                     <div class="card-block">
                                         <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">#{msg.fullname}<span class="text-danger">*</span> </label>
+                                            <label class="col-sm-4 col-form-label">First Name<span class="text-danger">*</span> </label>
                                             <div class="col-md-8">
-                                                <p:inputText class="col" value="#{appSession.currentUser.fullname}" required="true"/>
+                                                <p:inputText class="col" value="#{appSession.currentUser.firstName}" required="true"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Middle Name<span class="text-danger">*</span> </label>
+                                            <div class="col-md-8">
+                                                <p:inputText class="col" value="#{appSession.currentUser.middleName}" required="true"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Other Name<span class="text-danger">*</span> </label>
+                                            <div class="col-md-8">
+                                                <p:inputText class="col" value="#{appSession.currentUser.otherName}"/>
                                             </div>
                                         </div>
                                         
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">#{msg.email_ddress}<span class="text-danger">*</span> </label>
                                             <div class="col-md-8">
-                                                <p:inputText class="col" value="#{appSession.currentUser.email}" required="true"/>
+                                                <p:inputText class="col" value="#{appSession.currentUser.emailAddress}" required="true"/>
                                             </div>
                                         </div>
                                         
@@ -41,33 +55,12 @@
                                         </div>
                                         
                                         <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Frame</label>
+                                            <label class="col-sm-4 col-form-label">Emergency Contact<span class="text-danger">*</span> </label>
                                             <div class="col-md-8">
-                                                <p:selectOneMenu class="col" value="#{appSession.currentUser.frame}" required="true">
-                                                    <f:selectItem itemLabel="#{msg.choose}"/>
-                                                    <f:selectItems value="#{commonClass.unitOfMeasurementList}"/>
-                                                </p:selectOneMenu>
+                                                <p:inputText class="col" value="#{appSession.currentUser.emergencyContact}" required="true"/>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">#{msg.width}</label>
-                                            <div class="col-md-8">
-                                                <p:selectOneMenu class="col" value="#{appSession.currentUser.width}" required="true">
-                                                    <f:selectItem itemLabel="#{msg.choose}"/>
-                                                    <f:selectItems value="#{commonClass.unitOfMeasurementList}"/>
-                                                </p:selectOneMenu>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">#{msg.height}</label>
-                                            <div class="col-md-8">
-                                                <p:selectOneMenu class="col" value="#{appSession.currentUser.height}" required="true">
-                                                    <f:selectItem itemLabel="#{msg.choose}"/>
-                                                    <f:selectItems value="#{commonClass.unitOfMeasurementList}"/>
-                                                </p:selectOneMenu>
-                                            </div>
-                                        </div>
-
+                                    
                                          <div class="text-center pt-3">
                                              <p:commandButton class="kbtn-success" value="Save Changes" icon="#{msg.check_icon}" action="#{profileUpdateController.updateAccount()}" update="@form"/>
                

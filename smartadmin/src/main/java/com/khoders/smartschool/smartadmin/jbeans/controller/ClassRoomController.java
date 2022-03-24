@@ -49,7 +49,7 @@ public class ClassRoomController implements Serializable
             if (crudApi.save(classRoom) != null)
             {
                 classRoomList = CollectionList.washList(classRoomList, classRoom);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             clearClassRoom();
         } catch (Exception e)
@@ -70,7 +70,7 @@ public class ClassRoomController implements Serializable
             if (crudApi.delete(classRoom))
             {
                 classRoomList.remove(classRoom);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {

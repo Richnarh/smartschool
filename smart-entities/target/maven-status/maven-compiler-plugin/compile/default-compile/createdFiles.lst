@@ -9,8 +9,10 @@ com\khoders\smartschool\entities\Course.class
 com\khoders\smartschool\entities\ExamsReport.class
 com\khoders\smartschool\enums\StudentStatus.class
 com\khoders\smartschool\entities\FeesPayment.class
+com\khoders\smartschool\entities\StudentClass.class
 com\khoders\smartschool\entities\Fees.class
 com\khoders\smartschool\entities\StudentClassRoom.class
 com\khoders\smartschool\entities\UserAccountRecord.class
 com\khoders\smartschool\entities\ClassRoom.class
 com\khoders\smartschool\entities\RefNo.class
+com\khoders\smartschool\entities\SchoolSubject.class

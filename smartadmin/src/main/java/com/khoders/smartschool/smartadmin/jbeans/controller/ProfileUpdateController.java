@@ -36,11 +36,11 @@ public class ProfileUpdateController implements Serializable{
             if(appSession.getCurrentUser() != null)
             {
                 crudApi.save(appSession.getCurrentUser());
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             else
             {
-              Msg.success(Msg.DELETE_MESSAGE);
+              Msg.info(Msg.DELETE_MESSAGE);
             }
         } 
         catch (Exception e) 
@@ -73,7 +73,7 @@ public class ProfileUpdateController implements Serializable{
         
         if(crudApi.save(appSession.getCurrentUser()) != null)
         {
-           Msg.success(Msg.setMsg("Password Reset successful!"));
+           Msg.info(Msg.setMsg("Password Reset infoful!"));
         }
     }
 

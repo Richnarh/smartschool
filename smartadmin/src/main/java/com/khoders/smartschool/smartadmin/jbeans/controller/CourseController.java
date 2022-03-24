@@ -50,7 +50,7 @@ public class CourseController implements Serializable
             if (crudApi.save(course) != null)
             {
                 courseList = CollectionList.washList(courseList, course);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             clearCourse();
         } catch (Exception e)
@@ -72,7 +72,7 @@ public class CourseController implements Serializable
             if (crudApi.delete(course))
             {
                 courseList.remove(course);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
         } catch (Exception e)
         {

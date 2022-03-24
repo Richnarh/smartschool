@@ -60,7 +60,7 @@ public class FeesController implements Serializable
             if (crudApi.save(fees) != null)
             {
                 feesList = CollectionList.washList(feesList, fees);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             clearFees();
         } catch (Exception e)
@@ -150,7 +150,7 @@ public class FeesController implements Serializable
             if (crudApi.delete(fees))
             {
                 feesList.remove(fees);
-                Msg.success(Msg.SUCCESS_MESSAGE);
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
            
         } catch (Exception e)

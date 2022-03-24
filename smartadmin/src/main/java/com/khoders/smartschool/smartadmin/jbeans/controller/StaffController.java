@@ -9,6 +9,7 @@ import com.khoders.resource.jpa.CrudApi;
 import com.khoders.resource.utilities.CollectionList;
 import com.khoders.resource.utilities.FormView;
 import com.khoders.resource.utilities.Msg;
+import static com.khoders.resource.utilities.SecurityUtil.hashText;
 import com.khoders.resource.utilities.SystemUtils;
 import com.khoders.smartschool.entities.setup.UserAccount;
 import com.khoders.smartschool.smartadmin.services.AppService;
@@ -53,10 +54,13 @@ public class StaffController implements Serializable
     public void saveStaff(){
         try
         {
+            staff.setPassword(hashText(staff.getPassword()));
+            
+            System.out.println("Password -- "+staff.getPassword());
             if(crudApi.save(staff) != null)
             {
                staffList = CollectionList.washList(staffList, staff);
-               Msg.setMsg("Staff created successfully!");
+               Msg.info("Staff created infofully!");
             }
             closePage();
         } catch (Exception e)
@@ -78,7 +82,7 @@ public class StaffController implements Serializable
         {
             if(crudApi.delete(staff)){
                 staffList.remove(staff);
-                Msg.setMsg("Staff deleted successfully!");
+                Msg.info("Staff deleted infofully!");
             }
         } catch (Exception e)
         {

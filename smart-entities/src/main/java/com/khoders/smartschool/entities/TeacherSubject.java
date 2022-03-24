@@ -13,18 +13,15 @@ import javax.persistence.Table;
 @Table(name = "teacher_subject")
 public class TeacherSubject extends UserAccountRecord
 {
-   @JoinColumn(name = "courses", referencedColumnName = "id")
+   @JoinColumn(name = "class_room", referencedColumnName = "id")
    @ManyToOne
-   private Course course;
+   private ClassRoom classRoom;
 
-    public Course getCourse()
-    {
-        return course;
+    public ClassRoom getClassRoom() {
+        return classRoom;
     }
 
-    public void setCourse(Course course)
-    {
-        this.course = course;
+    public void setClassRoom(ClassRoom classRoom) {
+        this.classRoom = classRoom;
     }
-    
 }

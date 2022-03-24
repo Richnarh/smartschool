@@ -16,6 +16,7 @@
     <class>com.khoders.smartschool.entities.setup.UserAccount</class>
     <class>com.khoders.smartschool.entities.FeesPayment</class>
     <class>com.khoders.smartschool.entities.School</class>
+    <class>com.khoders.smartschool.entities.SchoolSubject</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
