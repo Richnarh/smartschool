@@ -8,6 +8,7 @@
     <div class="row wow zoomIn">
         <div class="col-lg-4">
             <h:form id="schoolSubjectForm">
+                <u><h3>Add subject/Course(s) for sir <span class="text-uppercase">#{teacherCourseRoomController.selectTeacher.firstName} #{teacherCourseRoomController.selectTeacher.middleName} #{teacherCourseRoomController.selectTeacher.otherName}</span></h3></u>
                 <h:panelGrid columns="2" class="spaced-form"> 
                     <span>#{msg.staff}</span>
                     <h:outputText value="#{teacherCourseRoomController.selectTeacher.firstName} #{teacherCourseRoomController.selectTeacher.middleName} #{teacherCourseRoomController.selectTeacher.otherName}" class="field-shade"/>
@@ -21,9 +22,8 @@
                 </h:panelGrid>
 
                 <div class="py-3">
-                    <p:commandButton value="#{teacherCourseRoomController.optionText}" icon="#{msg.add_icon}" class="kbtn-info mx-2" action="#{teacherCourseRoomController.saveSchoolSubject()}" update=":schoolSubjectTable, @form"/>
-
                     <p:commandButton value="#{msg.clear}" class="kbtn-default mx-3" icon="#{msg.clear_icon}" immediate="true" action="#{teacherCourseRoomController.clearSchoolSubject()}" update="@form"/>
+                    <p:commandButton value="#{teacherCourseRoomController.optionText}" icon="#{msg.check_icon_circle}" class="kbtn-success mx-2" action="#{teacherCourseRoomController.saveSchoolSubject()}" update=":schoolSubjectTable, @form"/>
                 </div>
             </h:form>
         </div>

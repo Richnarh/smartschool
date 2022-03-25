@@ -104,16 +104,16 @@
                                     <h:form class="spaced-form">
                                         <h:panelGrid columns="4">
 
-                                            <span>Student ID</span>
+                                            <span>Student ID <span class="text-danger">*</span></span>
                                             <p:inputText value="#{studentController.student.studentId}" required="true"/>
 
                                             <span>Admission Date</span>
                                             <p:datePicker value="#{studentController.student.admittedDate}" pattern="#{msg.formatted_date}" yearNavigator="true" monthNavigator="true"/>
 
-                                            <span>First Name</span>
+                                            <span>First Name <span class="text-danger">*</span></span>
                                             <p:inputText value="#{studentController.student.firstName}" required="true"/>
 
-                                            <span>Surname</span>
+                                            <span>Surname <span class="text-danger">*</span></span>
                                             <p:inputText value="#{studentController.student.middleName}" required="true"/>
 
                                             <span>Other Name</span>
@@ -132,7 +132,7 @@
                                             </p:selectOneMenu>-->
                                             
                                             <span>#{msg.level}</span>
-                                            <p:selectOneMenu value="#{studentController.student.academicLevel}">
+                                            <p:selectOneMenu value="#{studentController.student.academicLevel}" filter="true" filterMatchMode="contains">
                                                 <f:selectItem itemLabel="#{msg.choose}"/>
                                                 <f:selectItems value="#{userCommons.academicLevelList}"/>
                                             </p:selectOneMenu>
@@ -153,8 +153,8 @@
 
                                          <hr/>
                                         <div class="text-center pt-3">
-                                            <p:commandButton class="kbtn-success" value="#{studentController.optionText}" icon="#{msg.check_icon}" action="#{studentController.saveStudent()}" update=":mainPanel"/>
-                                            <p:commandButton class="kbtn-default ml-2" value="#{msg.clear}" icon="#{msg.clear_icon}" action="#{studentController.clearStudent()}" immediate="true" update=":mainPanel"/>
+                                            <p:commandButton class="kbtn-default mr-2" value="#{msg.clear}" icon="#{msg.clear_icon}" action="#{studentController.clearStudent()}" immediate="true" update=":mainPanel"/>
+                                            <p:commandButton class="kbtn-success" value="#{studentController.optionText}" icon="#{msg.check_icon_circle}" action="#{studentController.saveStudent()}" update=":mainPanel"/>
 
                                             <h:commandButton value="#{msg.close}" class="btn btn-danger float-right" immediate="true" action="#{studentController.closePage()}">
                                                 <p:ajax update="@form,:mainPanel"/>

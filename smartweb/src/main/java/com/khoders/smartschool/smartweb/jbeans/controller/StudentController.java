@@ -86,6 +86,7 @@ public class StudentController implements Serializable
 
     public void clearStudent()
     {
+        student.genRefNo();
         student = new Student();
         optionText = "Save Changes";
         SystemUtils.resetJsfUI();

@@ -35,7 +35,7 @@
                                                 <p:inputText value="#{feesController.fees.feesAmount}"/>
                                                 
                                                 <p:commandButton action="#{feesController.clearFees()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
-                                                <p:commandButton action="#{feesController.saveFees()}" class="kbtn-success" value="#{feesController.optionText}" update="@form, :feesTable"/>
+                                                <p:commandButton action="#{feesController.saveFees()}" icon="#{msg.check_icon_circle}" class="kbtn-success" value="#{feesController.optionText}" update="@form, :feesTable"/>
                                             </h:panelGrid>
                                         </h:form>
                                     </div>

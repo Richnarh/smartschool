@@ -6,6 +6,7 @@
 package com.khoders.smartschool.smartadmin.services;
 
 import com.khoders.resource.jpa.CrudApi;
+import com.khoders.smartschool.entities.School;
 import com.khoders.smartschool.entities.SchoolSubject;
 import com.khoders.smartschool.entities.TeacherSubject;
 import com.khoders.smartschool.entities.setup.UserAccount;
@@ -30,5 +31,8 @@ public class AppService
     }
     public List<SchoolSubject> schoolSubjectList(TeacherSubject teacherSubject){
         return crudApi.getEm().createQuery("SELECT e FROM SchoolSubject e WHERE e.teacherSubject=?1 ORDER BY e.createdDate ASC", SchoolSubject.class).setParameter(1, teacherSubject).getResultList(); 
+    }
+    public List<School> schoolList(){
+        return crudApi.getEm().createQuery("SELECT e FROM School e ORDER BY e.createdDate ASC", School.class).getResultList(); 
     }
 }

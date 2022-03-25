@@ -8,7 +8,11 @@
     <div class="row wow zoomIn">
         <div class="col-lg-4">
             <h:form id="studentClassForm">
+                <u><h3>Add Student to <span class="text-uppercase">#{studentClassRoomController.selectedClassRoom.className}</span></h3></u>
                 <h:panelGrid columns="2" class="spaced-form"> 
+                    <span>#{msg.class}</span>
+                    <h:outputText value="#{studentClassRoomController.selectedClassRoom.className}" class="field-shade"/>
+                    
                     <span>#{msg.student}</span>
                     <p:selectOneMenu value="#{studentClassRoomController.studentClass.student}" filter="true" filterMatchMode="contains">
                         <f:selectItem itemLabel="#{msg.choose}"/>
@@ -17,9 +21,8 @@
                 </h:panelGrid>
 
                 <div class="py-3">
-                    <p:commandButton value="#{studentClassRoomController.optionText}" icon="#{msg.add_icon}" class="kbtn-info mx-2" action="#{studentClassRoomController.saveStudentClass()}" update=":studentClassTable, @form"/>
-
                     <p:commandButton value="#{msg.clear}" class="kbtn-default mx-3" icon="#{msg.clear_icon}" immediate="true" action="#{studentClassRoomController.clearStudentClass()}" update="@form"/>
+                    <p:commandButton value="#{studentClassRoomController.optionText}" icon="#{msg.check_icon_circle}" class="kbtn-success mx-2" action="#{studentClassRoomController.saveStudentClass()}" update=":studentClassTable, @form"/>
                 </div>
             </h:form>
         </div>
@@ -27,7 +30,7 @@
             <h:form id="studentClassTable">
                 <p:dataTable value="#{studentClassRoomController.studentClassList}" var="studentClass" 
                              paginator="true" paginatorPosition="bottom" rows="6">
-                    <p:column style="width: 0.5px">
+                    <p:column style="width: 20px">
                         <p:rowToggler/>
                     </p:column>
 
@@ -43,19 +46,18 @@
                         </p:panelGrid>
                     </p:rowExpansion>
 
-                    <p:column headerText="Paid" class="text-right" style="width: 70px;">
-                        <h:outputText value="#{studentClass.amountPaid}">
-                            <f:convertNumber pattern="#{msg.money_pattern}"/>
-                        </h:outputText>
+                    <p:column headerText="#{msg.student} No." style="width: 150px">
+                        <h:outputText value="#{studentClass.student.studentId}"/>
+                    </p:column>
+                    <p:column headerText="#{msg.student}">
+                        <h:outputText value="
+                                      #{studentClass.student.firstName} 
+                                      #{studentClass.student.middleName} 
+                                      #{studentClass.student.otherName}
+                                      "/>
                     </p:column>
 
-                    <p:column headerText="Remaining" class="text-right" style="width: 70px;">
-                        <h:outputText value="#{studentClass.amountRemaining}">
-                            <f:convertNumber pattern="#{msg.money_pattern}"/>
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column headerText="#{msg.action}" style="width: 30px;" exportable="false">
+                    <p:column headerText="#{msg.action}" style="width: 100px;" exportable="false">
                         <p:menuButton value="#{msg.manage}">
                             <p:menuitem action="#{studentClassRoomController.editStudentClass(studentClass)}" icon="fa fa-edit" class="text-info" value="#{msg.edit}"  update=":studentClassForm"/>
                             <p:menuitem action="#{studentClassRoomController.deleteStudentClass(studentClass)}" icon="fa fa-remove" class="text-danger" value="#{msg.delete}" update="@form"/>

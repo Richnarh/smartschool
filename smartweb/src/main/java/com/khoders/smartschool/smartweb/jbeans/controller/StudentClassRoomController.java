@@ -97,7 +97,12 @@ public class StudentClassRoomController implements Serializable
     
     public void manageStudentClass(StudentClassRoom studentClassRoom)
     {
+       this.studentClassRoom = studentClassRoom;
+       selectedClassRoom = studentClassRoom.getClassRoom();
+       pageView.restToCreateView();
        studentClassList = studentService.studentClassList(studentClassRoom);
+       
+       clearStudentClass();
     }
     
     public void saveStudentClass()
@@ -107,7 +112,7 @@ public class StudentClassRoomController implements Serializable
             if(crudApi.save(studentClass) != null)
             {
                 studentClassList = CollectionList.washList(studentClassList, studentClass);
-                Msg.info(Msg.SUCCESS_MESSAGE);
+                Msg.info("Student Added!");
             }
             clearStudentClass();
         } catch (Exception e)
@@ -119,13 +124,14 @@ public class StudentClassRoomController implements Serializable
     public void editStudentClass(StudentClass studentClass)
     {
         this.studentClass = studentClass; 
+        optionText = "Update";
     }
     
     public void deleteStudentClass(StudentClass studentClass)
     {
         try
         {
-           if(crudApi.save(studentClass))
+           if(crudApi.delete(studentClass))
            {
               studentClassList.remove(studentClass);
               Msg.info(Msg.DELETE_MESSAGE);
@@ -138,13 +144,17 @@ public class StudentClassRoomController implements Serializable
     
     public void clearStudentClass()
     {
+      studentClass.genRefNo();
       studentClass = new StudentClass();
-      optionText = "Update";
+      studentClass.setUserAccount(appSession.getCurrentUser());
+      studentClass.setStudentClassRoom(studentClassRoom);
+      optionText = "Save Changes";
       SystemUtils.resetJsfUI();
     }
 
     public void clearStudentClassRoom()
     {
+        studentClassRoom.genRefNo();
         studentClassRoom = new StudentClassRoom();
         studentClassRoom.setUserAccount(appSession.getCurrentUser());
         optionText = "Save Changes";

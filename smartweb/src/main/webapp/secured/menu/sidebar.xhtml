@@ -7,21 +7,13 @@
     <nav class="pcoded-navbar">
         <div class="nav-list">
             <div class="pcoded-inner-navbar main-menu">
-                <div class="pcoded-navigation-label">Navigation</div>
+                <div class="pcoded-navigation-label">S T A F F</div>
                 <ul class="pcoded-item pcoded-left-item">
                    
                     <li class="active">
                         <a href="#{application.contextPath}/secured/index.xhtml" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                             <span class="pcoded-mtext">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="#{application.contextPath}/#{msg.sidebar_url}/student-class-room.xhtml" class="waves-effect waves-dark">
-                            <span class="pcoded-micon">
-                                <i class="feather icon-menu"></i>
-                            </span>
-                            <span class="pcoded-mtext">Student Class Room</span>
                         </a>
                     </li>
                     <li class="">
@@ -33,6 +25,15 @@
                         </a>
                     </li>
                     <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/student-class-room.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Student Class Room</span>
+                        </a>
+                    </li>
+                    
+                    <li class="">
                         <a href="#{application.contextPath}/#{msg.sidebar_url}/fees.xhtml" class="waves-effect waves-dark">
                             <span class="pcoded-micon">
                                 <i class="feather icon-menu"></i>
@@ -43,12 +44,17 @@
                     <li class="pcoded-hasmenu">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                            <span class="pcoded-mtext">Pages</span>
+                            <span class="pcoded-mtext">Exams And Term Reports</span>
                         </a>
                         <ul class="pcoded-submenu">
                             <li class="">
-                                <a href="#" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">Defaults</span>
+                                <a href="#{application.contextPath}/#{msg.sidebar_url}/exams.xhtml" class="waves-effect waves-dark">
+                                    <span class="pcoded-mtext">Exams</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#{application.contextPath}/#{msg.sidebar_url}/term-report.xhtml" class="waves-effect waves-dark">
+                                    <span class="pcoded-mtext">Term Report</span>
                                 </a>
                             </li>
                         </ul>

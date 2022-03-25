@@ -89,7 +89,7 @@
                             <h:panelGroup rendered="#{staffController.pageView.createView}">
                                 <div class="col-md-6 mb-5 pt-3 mx-auto">
                                     <h:form class="spaced-form">
-                                        <h:panelGrid columns="2">
+                                        <h:panelGrid columns="4">
                                             <span>Title</span>
                                             <p:selectOneMenu value="#{staffController.staff.title}">
                                                 <f:selectItem itemLabel="#{msg.choose}"/>
@@ -133,10 +133,10 @@
                                             <h:inputSecret class="form-control" value="#{staffController.staff.password}"/>
 
                                         </h:panelGrid>
-
+                                        <hr/>
                                         <div class="text-center pt-3">
-                                            <p:commandButton class="kbtn-success" value="#{staffController.optionText}" icon="#{msg.check_icon}" action="#{staffController.saveStaff()}" ajax="false"/>
-                                            <p:commandButton class="kbtn-default ml-2" value="#{msg.clear}" icon="#{msg.clear_icon}" action="#{staffController.clearStaff()}" immediate="true" update=":mainPanel"/>
+                                            <p:commandButton class="kbtn-default mr-2" value="#{msg.clear}" icon="#{msg.clear_icon}" action="#{staffController.clearStaff()}" immediate="true" update=":mainPanel"/>
+                                            <p:commandButton class="kbtn-success" value="#{staffController.optionText}" icon="#{msg.check_icon_circle}" action="#{staffController.saveStaff()}" ajax="false"/>
 
                                             <h:commandButton value="#{msg.close}" class="btn btn-danger float-right" immediate="true" action="#{staffController.closePage()}">
                                                 <p:ajax update="@form,:mainPanel"/>
