@@ -14,23 +14,9 @@ import javax.persistence.Table;
 @Table(name = "student_class_room")
 public class StudentClassRoom extends UserAccountRecord
 {
-    @JoinColumn(name = "student")
-    @ManyToOne
-    private Student student;
-    
     @JoinColumn(name = "class_rooms", referencedColumnName = "id")
     @ManyToOne
     private ClassRoom classRoom ;
-
-    public Student getStudent()
-    {
-        return student;
-    }
-
-    public void setStudent(Student student)
-    {
-        this.student = student;
-    }
 
     public ClassRoom getClassRoom() {
         return classRoom;

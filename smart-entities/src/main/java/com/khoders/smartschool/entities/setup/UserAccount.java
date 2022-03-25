@@ -1,9 +1,14 @@
 package com.khoders.smartschool.entities.setup;
 
 
-import com.khoders.smartschool.entities.ReferenceNo;
+import com.khoders.resource.enums.AccessLevel;
+import com.khoders.resource.enums.Status;
+import com.khoders.resource.enums.Title;
+import com.khoders.smartschool.entities.RefNo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 
@@ -13,32 +18,49 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "user_account")
-public class UserAccount extends ReferenceNo
+public class UserAccount extends RefNo
 {
-    @Column(name = "school_name")
-    private String schoolName;
-
     @Column(name = "phone_number")
     private String phoneNumber;
+    
+    @Column(name = "staff_no")
+    private String staffNo;
 
     @Column(name = "email_address")
     private String emailAddress;
 
+    @Column(name = "title")
+    @Enumerated(EnumType.STRING)
+    private Title title;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "middle_name")
+    private String middleName;
+
+    @Column(name = "other_name")
+    private String otherName;
+
+    @Column(name = "emergency_contact")
+    private String emergencyContact;
+
+    @Column(name = "house_address")
+    private String houseAddress;
+    
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+    
+    @Column(name = "access_level")
+    @Enumerated(EnumType.STRING)
+    private AccessLevel accessLevel;
+    
     @Column(name = "username")
     private String username;
 
     @Column(name = "password")
     private String password;
-
-    public String getSchoolName()
-    {
-        return schoolName;
-    }
-
-    public void setSchoolName(String schoolName)
-    {
-        this.schoolName = schoolName;
-    }
 
     public String getPhoneNumber()
     {
@@ -58,6 +80,86 @@ public class UserAccount extends ReferenceNo
     public void setEmailAddress(String emailAddress)
     {
         this.emailAddress = emailAddress;
+    }
+
+    public Title getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(Title title)
+    {
+        this.title = title;
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName()
+    {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName)
+    {
+        this.middleName = middleName;
+    }
+
+    public String getOtherName()
+    {
+        return otherName;
+    }
+
+    public void setOtherName(String otherName)
+    {
+        this.otherName = otherName;
+    }
+
+    public String getEmergencyContact()
+    {
+        return emergencyContact;
+    }
+
+    public void setEmergencyContact(String emergencyContact)
+    {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public String getHouseAddress()
+    {
+        return houseAddress;
+    }
+
+    public void setHouseAddress(String houseAddress)
+    {
+        this.houseAddress = houseAddress;
+    }
+
+    public Status getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
+
+    public AccessLevel getAccessLevel()
+    {
+        return accessLevel;
+    }
+
+    public void setAccessLevel(AccessLevel accessLevel)
+    {
+        this.accessLevel = accessLevel;
     }
 
     public String getUsername()
@@ -80,5 +182,19 @@ public class UserAccount extends ReferenceNo
         this.password = password;
     }
 
-    
+    public String getStaffNo()
+    {
+        return staffNo;
+    }
+
+    public void setStaffNo(String staffNo)
+    {
+        this.staffNo = staffNo;
+    }
+
+    @Override
+    public String toString()
+    {
+        return username +" "+staffNo;
+    }
 }

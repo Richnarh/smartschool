@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition template="../templatesUI.xhtml">
+            <ui:define name="pageTitle">Fees Type</ui:define>
+            <ui:define name="subText">E.g. Exams, ICT, Sport fees e.t.c</ui:define>
+            <ui:define name="pageContent">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h:form class="spaced-form" id="feesTypeForm">
+                            <h:panelGrid columns="2">
+                                <span>Fees Type</span>
+                                <p:inputText required="true" value="#{feesTypeController.feesType.feesTypeName}"/>
+
+                                <p:commandButton action="#{feesTypeController.clearFeesType()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
+                                <p:commandButton action="#{feesTypeController.saveFeesType()}"  class="kbtn-success" value="#{feesTypeController.optionText}" update="@form,:feesTypeTable"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    <div class="col-md-8">
+                        <h:form id="feesTypeTable">
+                            <p:dataTable value="#{feesTypeController.feesTypeList}" var="feesType" paginator="true" rows="12" paginatorPosition="bottom">
+                                <p:column headerText="Fees Type">
+                                    <h:outputText value="#{feesType.feesTypeName}"/>
+                                </p:column>
+                                <p:column headerText="#{msg.action}" style="width: 120px;" exportable="false">
+                                    <p:menuButton value="#{msg.manage}">
+                                        <p:menuitem action="#{feesTypeController.editFeesType(feesType)}" icon="fa fa-edit" class="text-info" value="#{msg.edit}" immediate="true" update=":feesTypeForm"/>
+                                        <p:menuitem action="#{feesTypeController.deleteFeesType(feesType)}" onclick="return confirm('#{msg.delete_message}')" icon="fa fa-remove" class="text-danger" value="#{msg.delete}" immediate="true" update="@form"/>
+                                    </p:menuButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

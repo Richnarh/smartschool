@@ -3,6 +3,21 @@
   <!-- Define Persistence Unit -->
   <persistence-unit name="smartschoolPU" transaction-type="JTA">
     <jta-data-source>jdbc/smartschool</jta-data-source>
+    <class>com.khoders.smartschool.entities.AcademicLevel</class>
+    <class>com.khoders.smartschool.entities.ClassRoom</class>
+    <class>com.khoders.smartschool.entities.Course</class>
+    <class>com.khoders.smartschool.entities.Student</class>
+    <class>com.khoders.smartschool.entities.StudentClassRoom</class>
+    <class>com.khoders.smartschool.entities.TeacherSubject</class>
+    <class>com.khoders.smartschool.entities.setup.UserAccount</class>
+    <class>com.khoders.smartschool.entities.ExamsReport</class>
+    <class>com.khoders.smartschool.entities.Fees</class>
+    <class>com.khoders.smartschool.entities.FeesType</class>
+    <class>com.khoders.smartschool.entities.TerminalReport</class>
+    <class>com.khoders.smartschool.entities.FeesPayment</class>
+    <class>com.khoders.smartschool.entities.School</class>
+    <class>com.khoders.smartschool.entities.SchoolSubject</class>
+    <class>com.khoders.smartschool.entities.StudentClass</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

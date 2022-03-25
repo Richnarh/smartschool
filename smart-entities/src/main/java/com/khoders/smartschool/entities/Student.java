@@ -2,6 +2,7 @@
 package com.khoders.smartschool.entities;
 
 import com.khoders.resource.enums.Gender;
+import com.khoders.smartschool.enums.StudentStatus;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,10 +21,17 @@ import javax.persistence.Table;
 public class Student extends UserAccountRecord
 {
    @Column(name = "admitted_date")
-   private LocalDate admittedDate = LocalDate.now();
+   private LocalDate admittedDate;
+   
+   @Column(name = "student_id")
+   private String studentId;
    
    @Column(name = "first_name")
    private String firstName;
+   
+   @Column(name = "student_status")
+   @Enumerated(EnumType.STRING)
+   private StudentStatus studentStatus;
    
    @Column(name = "middle_name")
    private String middleName;
@@ -50,9 +58,6 @@ public class Student extends UserAccountRecord
 
    @Column(name = "house_address")
    private String houseAddress;
-
-   @Column(name = "full_name")
-   private String fullName = firstName +" "+middleName +" "+otherName;
 
     public LocalDate getAdmittedDate()
     {
@@ -144,16 +149,6 @@ public class Student extends UserAccountRecord
         this.houseAddress = houseAddress;
     }
 
-    public String getFullName()
-    {
-        return fullName;
-    }
-
-    public void setFullName(String fullName)
-    { 
-        this.fullName = fullName;
-    }
-
     public String getGuardianContact()
     {
         return guardianContact;
@@ -162,6 +157,32 @@ public class Student extends UserAccountRecord
     public void setGuardianContact(String guardianContact)
     {
         this.guardianContact = guardianContact;
+    }
+
+    public String getStudentId()
+    {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId)
+    {
+        this.studentId = studentId;
+    }
+
+    public StudentStatus getStudentStatus()
+    {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus)
+    {
+        this.studentStatus = studentStatus;
+    }
+
+    @Override
+    public String toString()
+    {
+        return firstName +" "+middleName +" "+otherName;
     }
 
 }

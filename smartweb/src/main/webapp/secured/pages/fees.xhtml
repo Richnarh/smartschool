@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition template="../templatesUI.xhtml">
+            <ui:define name="pageTitle">Fees</ui:define>
+            <ui:define name="pageContent">
+                <h:panelGroup id="mainPanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <h:panelGroup rendered="#{feesController.pageView.listView}">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h:form class="spaced-form" id="feesForm">
+                                            <h:panelGrid columns="2">
+                                                <span>Fees Type</span>
+                                                <p:selectOneMenu value="#{feesController.fees.feesType}" required="true" filter="true" filterMatchMode="contains">
+                                                    <f:selectItem itemLabel="#{msg.choose}"/>
+                                                    <f:selectItems value="#{userCommons.feesTypeList}"/>
+                                                </p:selectOneMenu>
+
+                                                <span>Student</span>
+                                                <p:selectOneMenu value="#{feesController.fees.student}" required="true" filter="true" filterMatchMode="contains">
+                                                    <f:selectItem itemLabel="#{msg.choose}"/>
+                                                    <f:selectItems value="#{userCommons.studentList}"/>
+                                                </p:selectOneMenu>
+                                                
+                                                <span>Fees Amount</span>
+                                                <p:inputText value="#{feesController.fees.feesAmount}"/>
+                                                
+                                                <p:commandButton action="#{feesController.clearFees()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
+                                                <p:commandButton action="#{feesController.saveFees()}" icon="#{msg.check_icon_circle}" class="kbtn-success" value="#{feesController.optionText}" update="@form, :feesTable"/>
+                                            </h:panelGrid>
+                                        </h:form>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h:form id="feesTable">
+                                            <p:dataTable value="#{feesController.feesList}" var="fees" paginator="true" rows="12" paginatorPosition="bottom">
+                                                <p:column style="width: 20px;">
+                                                    <p:rowToggler/>
+                                                </p:column>
+                                                <p:rowExpansion>
+                                                    <h:panelGrid columns="2">
+                                                        <span>#{msg.created_date}</span>
+                                                        <h:outputText value="#{fees.createdDate}">
+                                                            <f:convertDateTime type="localDate" pattern="#{msg.formatted_date}"/>
+                                                        </h:outputText>
+                                                    </h:panelGrid>
+                                                </p:rowExpansion>
+
+                                                <p:column style="width: 70px;" headerText="Fees Type" filterBy="#{fees.feesType}" filterMatchMode="contains">
+                                                    #{fees.feesType}
+                                                </p:column>
+                                                
+                                                <p:column headerText="#{msg.student}" filterBy="#{fees.student}" filterMatchMode="contains">
+                                                    #{fees.student}
+                                                </p:column>
+                                                
+                                                <p:column headerText="Fees Amount" class="text-right" style="width: 100px;">
+                                                    <h:outputText value="#{fees.feesAmount}">
+                                                        <f:convertNumber pattern="#{msg.money_pattern}"/>
+                                                    </h:outputText>
+                                                </p:column>
+
+                                                <p:column headerText="#{msg.action}" style="width: 100px;" exportable="false">
+                                                    <p:menuButton value="#{msg.manage}">
+                                                        <p:menuitem action="#{feesController.editFees(fees)}" icon="fa fa-edit" class="text-info" value="#{msg.edit}"  update=":feesForm"/>
+                                                        <p:menuitem icon="fa fa-plus" class="text-info" value="Payment" action="#{feesController.manageFees(fees)}" immediate="true" update=":mainPanel"/>
+                                                        <p:menuitem action="#{feesController.deleteFees(fees)}" icon="fa fa-remove" class="text-danger" value="#{msg.delete}" update="@form"/>
+                                                    </p:menuButton>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{feesController.pageView.createView}">
+                                <ui:include src="includes/fees-payment.xhtml"/>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+
+
+                </h:panelGroup>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

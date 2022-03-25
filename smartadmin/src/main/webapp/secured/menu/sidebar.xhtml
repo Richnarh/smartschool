@@ -1,0 +1,84 @@
+<f:subview id="sideMenu" xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://xmlns.jcp.org/jsf/html"
+           xmlns:f="http://xmlns.jcp.org/jsf/core"
+           xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+           xmlns:p="http://primefaces.org/ui">
+
+    <nav class="pcoded-navbar">
+        <div class="nav-list">
+            <div class="pcoded-inner-navbar main-menu">
+                <div class="pcoded-navigation-label">A D M I N</div>
+                <ul class="pcoded-item pcoded-left-item">
+                   
+                    <li class="active">
+                        <a href="#{application.contextPath}/secured/index.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                            <span class="pcoded-mtext">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/staff.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Staff</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/fees-type.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Fees Type</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/academic-level.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Academic Level</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/class-room.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Class Room</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/teacher-course.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Teacher Course</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/courses.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">#{msg.course}s</span>
+                        </a>
+                    </li>
+                    <li class="pcoded-hasmenu">
+                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
+                            <span class="pcoded-mtext">Pages</span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                            <li class="">
+                                <a href="#" class="waves-effect waves-dark">
+                                    <span class="pcoded-mtext">Defaults</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</f:subview>

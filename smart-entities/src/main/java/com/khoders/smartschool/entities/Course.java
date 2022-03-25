@@ -1,9 +1,8 @@
 package com.khoders.smartschool.entities;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -12,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "courses")
-public class Course extends UserAccountRecord
+public class Course extends UserAccountRecord implements Serializable
 {
    @Column(name = "course_code")
    private String courseCode;
@@ -20,10 +19,6 @@ public class Course extends UserAccountRecord
    @Column(name = "course_title")
    private String courseTitle;
    
-   @JoinColumn(name = "acadamic_level", referencedColumnName = "id")
-   @ManyToOne
-   private AcademicLevel academicLevel;
-
     public String getCourseCode()
     {
         return courseCode;
@@ -44,15 +39,9 @@ public class Course extends UserAccountRecord
         this.courseTitle = courseTitle;
     }
 
-    public AcademicLevel getAcademicLevel()
+    @Override
+    public String toString()
     {
-        return academicLevel;
+        return courseTitle;
     }
-
-    public void setAcademicLevel(AcademicLevel academicLevel)
-    {
-        this.academicLevel = academicLevel;
-    }
-   
-   
 }

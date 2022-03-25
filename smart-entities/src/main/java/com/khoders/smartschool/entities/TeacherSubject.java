@@ -1,6 +1,5 @@
 package com.khoders.smartschool.entities;
 
-import com.khoders.smartschool.entities.setup.StaffAccount;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,30 +13,15 @@ import javax.persistence.Table;
 @Table(name = "teacher_subject")
 public class TeacherSubject extends UserAccountRecord
 {
-   @JoinColumn(name = "courses", referencedColumnName = "id")
+   @JoinColumn(name = "class_room", referencedColumnName = "id")
    @ManyToOne
-   private Course course;
-   
-   @JoinColumn(name = "staff_account", referencedColumnName = "id")
-   @ManyToOne
-   private StaffAccount staffAccount;
+   private ClassRoom classRoom;
 
-    public Course getCourse()
-    {
-        return course;
+    public ClassRoom getClassRoom() {
+        return classRoom;
     }
 
-    public void setCourse(Course course)
-    {
-        this.course = course;
+    public void setClassRoom(ClassRoom classRoom) {
+        this.classRoom = classRoom;
     }
-
-    public StaffAccount getStaffAccount() {
-        return staffAccount;
-    }
-
-    public void setStaffAccount(StaffAccount staffAccount) {
-        this.staffAccount = staffAccount;
-    }
-   
 }

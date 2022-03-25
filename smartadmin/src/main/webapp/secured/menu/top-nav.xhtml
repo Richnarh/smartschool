@@ -1,0 +1,92 @@
+<f:subview id="topNav" xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:h="http://xmlns.jcp.org/jsf/html"
+           xmlns:f="http://xmlns.jcp.org/jsf/core"
+           xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+           xmlns:p="http://primefaces.org/ui">
+
+    <nav class="navbar header-navbar pcoded-header">
+        <div class="navbar-wrapper">
+            <div class="navbar-logo">
+                <a href="#{application.contextPath}/secured/index.xhtml">
+                    <!--<img class="img-fluid" src="{application.contextPath}/assets/images/user.png" alt="Theme-Logo" />-->
+                    Smart School - Primary/JHS
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="#!">
+                    <i class="feather icon-menu icon-toggle-right"></i>
+                </a>
+                <a class="mobile-options waves-effect waves-light">
+                    <i class="feather icon-more-horizontal"></i>
+                </a>
+            </div>
+            <div class="navbar-container container-fluid">
+                <ul class="nav-left">
+                    <li class="header-search">
+                        <div class="main-search morphsearch-search">
+                            <div class="input-group">
+                                <span class="input-group-prepend search-close">
+                                    <i class="feather icon-x input-group-text"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Enter Keyword"/>
+                                <span class="input-group-append search-btn">
+                                    <i class="feather icon-search input-group-text"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
+                            <i class="full-screen feather icon-maximize"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav-right">
+                    <li class="dropdown-primary dropdown">
+                        <h:form>
+                            <h:commandLink class="btn btn-default shadow-sm btn-sm" action="#{userCommons.init()}" value="Refresh"/>
+                        </h:form>
+                    </li>
+                    <li class="user-profile header-notification">
+                        
+                        <div class="dropdown-primary dropdown">
+                            <div class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="#{application.contextPath}/assets/images/user.png" class="img-radius" alt="User-Profile-Image"/>
+                                <span>#{appSession.currentUser}</span>
+                                <i class="feather icon-chevron-down"></i>
+                            </div>
+                            <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+
+                                <li>
+                                    <a href="#{application.contextPath}/secured/pages/profile-update.xhtml">
+                                        <i class="feather icon-user"></i> Profile
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#{application.contextPath}/secured/pages/school-profile.xhtml">
+                                        <i class="feather icon-user"></i>School Profile
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#{application.contextPath}/secured/pages/update-password.xhtml">
+                                        <i class="feather icon-lock"></i> Password
+
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <h:form>
+                                        <i class="feather icon-log-out"></i>
+                                        <h:commandLink class="text-secondary" value="Logout"
+                                                       action="#{loginController.doLogout()}"/>
+                                    </h:form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</f:subview>

@@ -7,57 +7,57 @@
     <nav class="pcoded-navbar">
         <div class="nav-list">
             <div class="pcoded-inner-navbar main-menu">
-                <div class="pcoded-navigation-label">Navigation</div>
+                <div class="pcoded-navigation-label">S T A F F</div>
                 <ul class="pcoded-item pcoded-left-item">
-                    <li class="pcoded-hasmenu active pcoded-trigger">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                   
+                    <li class="active">
+                        <a href="#{application.contextPath}/secured/index.xhtml" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                             <span class="pcoded-mtext">Dashboard</span>
                         </a>
-                        <ul class="pcoded-submenu">
-                            <li class="active">
-                                <a href="index.html" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">Default</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="default/dashboard-crm.html" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">CRM</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="default/dashboard-analytics.html" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">Analytics</span>
-                                    <span class="pcoded-badge label label-info ">NEW</span>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/student.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">#{msg.student}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/student-class-room.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Student Class Room</span>
+                        </a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="#{application.contextPath}/#{msg.sidebar_url}/fees.xhtml" class="waves-effect waves-dark">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-menu"></i>
+                            </span>
+                            <span class="pcoded-mtext">Fees</span>
+                        </a>
                     </li>
                     <li class="pcoded-hasmenu">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                            <span class="pcoded-mtext">Pages</span>
+                            <span class="pcoded-mtext">Exams And Term Reports</span>
                         </a>
                         <ul class="pcoded-submenu">
                             <li class="">
-                                <a href="#{application.contextPath}/#{msg.sidebar_url}/staff.xhtml" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">#{msg.staff}</span>
+                                <a href="#{application.contextPath}/#{msg.sidebar_url}/exams.xhtml" class="waves-effect waves-dark">
+                                    <span class="pcoded-mtext">Exams</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#{application.contextPath}/#{msg.sidebar_url}/student.xhtml" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">#{msg.student}</span>
+                                <a href="#{application.contextPath}/#{msg.sidebar_url}/term-report.xhtml" class="waves-effect waves-dark">
+                                    <span class="pcoded-mtext">Term Report</span>
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="">
-                        <a href="default/navbar-light.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon">
-                                <i class="feather icon-menu"></i>
-                            </span>
-                            <span class="pcoded-mtext">Navigation</span>
-                        </a>
                     </li>
                     <li class="pcoded-hasmenu">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -68,25 +68,14 @@
                         </a>
                         <ul class="pcoded-submenu">
                             <li class="">
-                                <a href="#{application.contextPath}/#{msg.settings}/academic-level.xhtml" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">Academic Level</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#{application.contextPath}/#{msg.settings}/class-room.xhtml" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">Class Room</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#{application.contextPath}/#{msg.settings}/courses.xhtml" class="waves-effect waves-dark">
-                                    <span class="pcoded-mtext">#{msg.course}s</span>
+                                <a href="#" class="waves-effect waves-dark">
+                                    <span class="pcoded-mtext">Defaults</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </div>
-            
         </div>
     </nav>
 </f:subview>

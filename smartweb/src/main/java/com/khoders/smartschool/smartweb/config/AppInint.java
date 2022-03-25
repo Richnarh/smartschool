@@ -38,7 +38,7 @@ public class AppInint
 
         System.out.println("application started at - " + LocalDateTime.now());
         System.out.println("****  Going to create default user *******");
-        String defaultUser = "smartsalesplus";
+        String defaultUser = "smartschool";
 
         System.out.println("******************************************");
         System.out.println("******************************************");
