@@ -7,6 +7,7 @@ package com.khoders.smartschool.smartweb.services;
 
 import com.khoders.resource.jpa.CrudApi;
 import com.khoders.smartschool.entities.AcademicLevel;
+import com.khoders.smartschool.entities.AcademicTerm;
 import com.khoders.smartschool.entities.ClassRoom;
 import com.khoders.smartschool.entities.Course;
 import com.khoders.smartschool.entities.FeesType;
@@ -26,6 +27,9 @@ public class ConfigService
     public List<AcademicLevel> getAcademicLevelList(){
         return crudApi.getEm().createQuery("SELECT e FROM AcademicLevel e ORDER BY e.levelName ASC", AcademicLevel.class).getResultList();
     }
+    public List<AcademicTerm> getAcademicTermList(){
+        return crudApi.getEm().createQuery("SELECT e FROM AcademicTerm e", AcademicTerm.class).getResultList();
+    }
     public List<ClassRoom> getClassRoomList(){
         return crudApi.getEm().createQuery("SELECT e FROM ClassRoom e ORDER BY e.createdDate ASC", ClassRoom.class).getResultList();
     }
@@ -34,5 +38,8 @@ public class ConfigService
     }
     public List<FeesType> getFeesTypeList(){
         return crudApi.getEm().createQuery("SELECT e FROM FeesType e ORDER BY e.createdDate ASC", FeesType.class).getResultList(); 
+    }
+    public List<Course> getCourseList(){
+        return crudApi.getEm().createQuery("SELECT e FROM Course e ORDER BY e.createdDate ASC", Course.class).getResultList(); 
     }
 }

@@ -20,10 +20,6 @@ import javax.persistence.Table;
 @Table(name = "exams_report")
 public class ExamsReport extends UserAccountRecord implements Serializable
 {
-    @JoinColumn(name = "student", referencedColumnName = "id")
-    @ManyToOne
-    private Student student;
-    
     @JoinColumn(name = "terminal_report", referencedColumnName = "id")
     @ManyToOne
     private TerminalReport terminalReport;
@@ -41,6 +37,15 @@ public class ExamsReport extends UserAccountRecord implements Serializable
     @Column(name = "total_score")
     private double totalScore;
     
+    @Column(name = "raw_class_score")
+    private double rawClassScore;
+    
+    @Column(name = "raw_exams_score")
+    private double rawExamsScore;
+    
+    @Column(name = "raw_total_score")
+    private double rawTotalScore;
+    
     @Column(name = "grade")
     private String grade;
     
@@ -49,14 +54,6 @@ public class ExamsReport extends UserAccountRecord implements Serializable
     
     @Column(name = "remarks")
     private String remarks;
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
 
     public TerminalReport getTerminalReport() {
         return terminalReport;
@@ -120,6 +117,36 @@ public class ExamsReport extends UserAccountRecord implements Serializable
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public double getRawClassScore()
+    {
+        return rawClassScore;
+    }
+
+    public void setRawClassScore(double rawClassScore)
+    {
+        this.rawClassScore = rawClassScore;
+    }
+
+    public double getRawExamsScore()
+    {
+        return rawExamsScore;
+    }
+
+    public void setRawExamsScore(double rawExamsScore)
+    {
+        this.rawExamsScore = rawExamsScore;
+    }
+
+    public double getRawTotalScore()
+    {
+        return rawTotalScore;
+    }
+
+    public void setRawTotalScore(double rawTotalScore)
+    {
+        this.rawTotalScore = rawTotalScore;
     }
         
 }

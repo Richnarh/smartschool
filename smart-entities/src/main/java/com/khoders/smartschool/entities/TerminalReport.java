@@ -21,8 +21,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "terminal_report")
 public class TerminalReport extends UserAccountRecord implements Serializable{
-    @Column(name = "term")
-    private String term;
+    @JoinColumn(name = "student", referencedColumnName = "id")
+    @ManyToOne
+    private Student student;
+        
+    @JoinColumn(name = "academic_term")
+    @ManyToOne
+    private AcademicTerm academicTerm;
     
     @Column(name = "term_date")
     private LocalDate termDate;
@@ -51,8 +56,8 @@ public class TerminalReport extends UserAccountRecord implements Serializable{
     @ManyToOne
     private AcademicLevel toRepeat; 
     
-    @Column(name = "reopening")
-    private String reopening;
+    @Column(name = "reopening_date")
+    private LocalDate reopeningDate;
     
     @Column(name = "conduct")
     @Lob
@@ -68,18 +73,26 @@ public class TerminalReport extends UserAccountRecord implements Serializable{
     @Lob
     private String classMasterRemarks; 
     
+    @Column(name = "class_master_signature")
+    private byte[] classMasterSignature; 
+    
     @Column(name = "head_teacher_remarks")
     @Lob
     private String headTeacherRemarks; 
+    
+    @Column(name = "head_teacher_signature")
+    private byte[] headTeacherSignature; 
 
-    public String getTerm() {
-        return term;
+    public AcademicTerm getAcademicTerm()
+    {
+        return academicTerm;
     }
 
-    public void setTerm(String term) {
-        this.term = term;
+    public void setAcademicTerm(AcademicTerm academicTerm)
+    {
+        this.academicTerm = academicTerm;
     }
-
+    
     public LocalDate getTermDate() {
         return termDate;
     }
@@ -144,14 +157,36 @@ public class TerminalReport extends UserAccountRecord implements Serializable{
         this.toRepeat = toRepeat;
     }
 
-    public String getReopening() {
-        return reopening;
+    public LocalDate getReopeningDate()
+    {
+        return reopeningDate;
     }
 
-    public void setReopening(String reopening) {
-        this.reopening = reopening;
+    public void setReopeningDate(LocalDate reopeningDate)
+    {
+        this.reopeningDate = reopeningDate;
     }
 
+    public byte[] getClassMasterSignature()
+    {
+        return classMasterSignature;
+    }
+
+    public void setClassMasterSignature(byte[] classMasterSignature)
+    {
+        this.classMasterSignature = classMasterSignature;
+    }
+
+    public byte[] getHeadTeacherSignature()
+    {
+        return headTeacherSignature;
+    }
+
+    public void setHeadTeacherSignature(byte[] headTeacherSignature)
+    {
+        this.headTeacherSignature = headTeacherSignature;
+    }
+    
     public String getConduct() {
         return conduct;
     }
@@ -190,6 +225,13 @@ public class TerminalReport extends UserAccountRecord implements Serializable{
 
     public void setHeadTeacherRemarks(String headTeacherRemarks) {
         this.headTeacherRemarks = headTeacherRemarks;
+    }
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
     
 }

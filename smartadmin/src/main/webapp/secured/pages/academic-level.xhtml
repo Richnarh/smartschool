@@ -19,7 +19,7 @@
                                 <p:inputText required="true" value="#{academicLevelController.academicLevel.levelName}"/>
 
                                 <p:commandButton action="#{academicLevelController.clearAcademicLevel()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
-                                <p:commandButton action="#{academicLevelController.saveAcademicLevel()}"  class="kbtn-success" value="#{academicLevelController.optionText}" update="@form,:academicLevelTable"/>
+                                <p:commandButton action="#{academicLevelController.saveAcademicLevel()}"  icon="#{msg.check_icon_circle}" class="kbtn-success" value="#{academicLevelController.optionText}" update="@form,:academicLevelTable"/>
                             </h:panelGrid>
                         </h:form>
                     </div>

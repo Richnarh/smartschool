@@ -19,7 +19,7 @@
                                 <p:inputText required="true" value="#{feesTypeController.feesType.feesTypeName}"/>
 
                                 <p:commandButton action="#{feesTypeController.clearFeesType()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
-                                <p:commandButton action="#{feesTypeController.saveFeesType()}"  class="kbtn-success" value="#{feesTypeController.optionText}" update="@form,:feesTypeTable"/>
+                                <p:commandButton action="#{feesTypeController.saveFeesType()}" icon="#{msg.check_icon_circle}" class="kbtn-success" value="#{feesTypeController.optionText}" update="@form,:feesTypeTable"/>
                             </h:panelGrid>
                         </h:form>
                     </div>
