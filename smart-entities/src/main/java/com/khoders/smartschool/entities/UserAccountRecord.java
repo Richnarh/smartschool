@@ -13,9 +13,13 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class UserAccountRecord extends RefNo implements Serializable
 {
-   @JoinColumn(name = "user_account", referencedColumnName = "id")
+    @JoinColumn(name = "user_account", referencedColumnName = "id")
     @ManyToOne
     private UserAccount userAccount;
+    
+    @JoinColumn(name = "academic_term", referencedColumnName = "id")
+    @ManyToOne
+    private AcademicTerm academicTerm;
     
     public UserAccount getUserAccount()
     {
@@ -25,6 +29,16 @@ public class UserAccountRecord extends RefNo implements Serializable
     public void setUserAccount(UserAccount userAccount)
     {
         this.userAccount = userAccount;
+    }
+
+    public AcademicTerm getAcademicTerm()
+    {
+        return academicTerm;
+    }
+
+    public void setAcademicTerm(AcademicTerm academicTerm)
+    {
+        this.academicTerm = academicTerm;
     }
     
 }

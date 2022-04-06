@@ -6,6 +6,7 @@ package com.khoders.smartschool.smartweb.listener;
  * and open the template in the editor.
  */
 
+import com.khoders.smartschool.entities.AcademicTerm;
 import com.khoders.smartschool.entities.setup.UserAccount;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -19,10 +20,15 @@ import javax.inject.Named;
 @SessionScoped
 public class AppSession implements Serializable{
     private UserAccount currentUser;
+    private AcademicTerm currentTerm;
     
     public void login(UserAccount userAccount)
     {
         this.currentUser = userAccount;
+    }
+    public void initAcademicTerm(AcademicTerm currentTerm)
+    {
+        this.currentTerm=currentTerm;
     }
     
     public void logout()
@@ -39,4 +45,15 @@ public class AppSession implements Serializable{
     {
         this.currentUser = currentUser;
     }
+
+    public AcademicTerm getCurrentTerm()
+    {
+        return currentTerm;
+    }
+
+    public void setCurrentTerm(AcademicTerm currentTerm)
+    {
+        this.currentTerm = currentTerm;
+    }
+    
 }

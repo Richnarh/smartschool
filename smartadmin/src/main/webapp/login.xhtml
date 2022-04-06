@@ -40,7 +40,7 @@
                     <h:form class="md-float-material form-material">
                         <div class="text-center">
                             <!--<img src="#{application.contextPath}/assets/images/logo.png" alt="logo.png"/>-->
-                            Smart School - ADMIN
+                            #{msg.appName} - ADMIN
                         </div>
                         <div class="auth-box card">
                             <div class="card-block">
@@ -51,14 +51,14 @@
                                     <p:messages/>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="user-name" jsf:value="#{loginController.username}" class="form-control" required="true"/>
+                                    <input type="text" name="user-name" placeholder="Username" jsf:value="#{loginController.username}" class="form-control" required="true"/>
                                     <span class="form-bar"></span>
-                                    <label class="float-label">Username</label>
+                                    <!--<label class="float-label">Username</label>-->
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="password" name="password" jsf:value="#{loginController.password}" class="form-control" required="true"/>
+                                    <input type="password" name="password" placeholder="Password" jsf:value="#{loginController.password}" class="form-control" required="true"/>
                                     <span class="form-bar"></span>
-                                    <label class="float-label">Password</label>
+                                    <!--<label class="float-label">Password</label>-->
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">

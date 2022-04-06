@@ -58,7 +58,7 @@
 
                                                 <span>#{msg.created_date}</span>
                                                 <h:outputText value="#{student.createdDate}">
-                                                    <f:convertDateTime pattern="#{msg.formatted_date}" type="localDate"/>
+                                                    <f:convertDateTime pattern="#{msg.formatted_date_time_am_pm}" type="localDateTime"/>
                                                 </h:outputText>
                                             </h:panelGrid>
                                         </p:rowExpansion>

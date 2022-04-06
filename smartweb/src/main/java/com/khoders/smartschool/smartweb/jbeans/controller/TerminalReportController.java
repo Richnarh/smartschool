@@ -107,10 +107,19 @@ public class TerminalReportController implements Serializable
     {
         try
         {
-            0554850594
-                    
-            double classScore = (examsReport.getRawClassScore())*0.5;
-            double examsScore = (examsReport.getRawExamsScore())*0.5;
+            if(appSession.getCurrentUser().getExamsParameter() == null)
+            {
+                Msg.error("Please exams parameters haven't been applied on your account, contact your administrator!.");
+                return;
+            }
+            double overallClassMrk = appSession.getCurrentUser().getExamsParameter().getOverAllClassMrk();
+            double overallExamsMrk = appSession.getCurrentUser().getExamsParameter().getOverallExamsMrk();
+            
+            double classMrkPercentage = appSession.getCurrentUser().getExamsParameter().getOverallClassMrkPercentage();
+            double examsMrkPercentage = appSession.getCurrentUser().getExamsParameter().getOverallExamsMrkPercentage();
+            
+            double classScore = (examsReport.getRawClassScore()/overallClassMrk) * classMrkPercentage;
+            double examsScore = (examsReport.getRawExamsScore()/overallExamsMrk) * examsMrkPercentage;
             double totalScore = classScore + examsScore;
             
             examsReport.setClassScore(classScore);

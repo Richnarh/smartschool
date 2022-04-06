@@ -13,6 +13,10 @@ import com.khoders.smartschool.entities.setup.UserAccount;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -22,7 +26,6 @@ import javax.inject.Inject;
 public class AppService
 {
     @Inject private CrudApi crudApi;
-    
     public List<TeacherSubject> teacherSubjectList(){
         return crudApi.getEm().createQuery("SELECT e FROM TeacherSubject e ORDER BY e.createdDate ASC", TeacherSubject.class).getResultList(); 
     }
@@ -32,7 +35,16 @@ public class AppService
     public List<SchoolSubject> schoolSubjectList(TeacherSubject teacherSubject){
         return crudApi.getEm().createQuery("SELECT e FROM SchoolSubject e WHERE e.teacherSubject=?1 ORDER BY e.createdDate ASC", SchoolSubject.class).setParameter(1, teacherSubject).getResultList(); 
     }
-    public List<School> schoolList(){
-        return crudApi.getEm().createQuery("SELECT e FROM School e ORDER BY e.createdDate ASC", School.class).getResultList(); 
+    public List<School> schoolList()
+    {
+        CriteriaBuilder builder = crudApi.getEm().getCriteriaBuilder();
+        CriteriaQuery<School> criteriaQuery = builder.createQuery(School.class);
+        Root<School> root = criteriaQuery.from(School.class);
+        criteriaQuery.select(root);
+        
+        TypedQuery<School> typedQuery = crudApi.getEm().createQuery(criteriaQuery);
+        return typedQuery.getResultList();
+        
+//        return crudApi.getEm().createQuery("SELECT e FROM School e ORDER BY e.createdDate ASC", School.class).getResultList(); 
     }
 }

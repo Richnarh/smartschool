@@ -5,6 +5,7 @@
  */
 package com.khoders.smartschool.smartadmin.jbeans.controller;
 
+import com.khoders.digital.listener.AppSession;
 import com.khoders.resource.jpa.CrudApi;
 import com.khoders.resource.utilities.CollectionList;
 import com.khoders.resource.utilities.FormView;
@@ -30,6 +31,7 @@ import javax.inject.Named;
 public class StaffController implements Serializable
 {
     @Inject private CrudApi crudApi;
+    @Inject private AppSession appSession;
     @Inject private AppService appService;
     
     private UserAccount staff = new UserAccount();
@@ -56,11 +58,11 @@ public class StaffController implements Serializable
         {
             staff.setPassword(hashText(staff.getPassword()));
             
-            System.out.println("Password -- "+staff.getPassword());
+            staff.setSchool(appSession.getCurrentUser().getSchool());
             if(crudApi.save(staff) != null)
             {
                staffList = CollectionList.washList(staffList, staff);
-               Msg.info("Staff created infofully!");
+               Msg.info("Staff created successfully!");
             }
             closePage();
         } catch (Exception e)
@@ -89,7 +91,7 @@ public class StaffController implements Serializable
            e.printStackTrace();
         }
     }
-
+    
     public void clearStaff()
     {
        staff = new UserAccount();

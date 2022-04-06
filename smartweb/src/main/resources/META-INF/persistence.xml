@@ -19,6 +19,8 @@
     <class>com.khoders.smartschool.entities.SchoolSubject</class>
     <class>com.khoders.smartschool.entities.StudentClass</class>
     <class>com.khoders.smartschool.entities.AcademicTerm</class>
+    <class>com.khoders.smartschool.entities.ExamsParameters</class>
+    <class>com.khoders.smartschool.entities.ExamsParameter</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

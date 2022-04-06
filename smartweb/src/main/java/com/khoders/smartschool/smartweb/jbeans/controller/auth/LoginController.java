@@ -68,6 +68,7 @@ public class LoginController implements Serializable
                 return null;
             }
             appSession.login(userAccount);
+            appSession.initAcademicTerm(userAccount.getAcademicTerm());
             Faces.redirect(Pages.index);
 
         } catch (Exception e)

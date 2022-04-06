@@ -8,6 +8,7 @@ package com.khoders.smartschool.smartweb.config;
 import com.khoders.smartschool.entities.setup.UserAccount;
 import com.khoders.resource.jpa.CrudApi;
 import static com.khoders.resource.utilities.SecurityUtil.hashText;
+import com.khoders.smartschool.entities.School;
 import com.khoders.smartschool.smartweb.jbeans.AuthModel;
 import com.khoders.smartschool.smartweb.services.AuthService;
 import java.time.LocalDateTime;
@@ -59,7 +60,15 @@ public class AppInint
             userAccount.setPassword(hashText(defaultUser));
 
             crudApi.save(userAccount);
-
+            
+            School school = new School();
+            school.setSchoolName("Smart Primary/JHS");
+            school.setAddress("Cantoment, Accra");
+            school.setTelephone("+233574417585");
+            school.setWebsite("https://smartschool.edu.gh");
+            school.setUserAccount(userAccount);
+            crudApi.save(school);
+            
         } catch (Exception e)
         {
             e.printStackTrace();

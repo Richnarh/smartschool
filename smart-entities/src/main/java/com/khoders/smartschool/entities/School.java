@@ -82,6 +82,12 @@ public class School extends UserAccountRecord implements Serializable
     {
         this.website = website;
     }
+
+    @Override
+    public String toString()
+    {
+        return schoolName;
+    }
     
     
 }

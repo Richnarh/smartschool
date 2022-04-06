@@ -47,6 +47,9 @@
                                                 <span>Email Address</span>
                                                 <h:outputText value="#{staff.emailAddress}"/>
                                                 
+                                                <span>School</span>
+                                                <h:outputText value="#{staff.school}"/>
+                                                
                                                 <span>#{msg.created_date}</span>
                                                 <h:outputText value="#{staff.createdDate}">
                                                     <f:convertDateTime pattern="#{msg.formatted_date}" type="localDate"/>

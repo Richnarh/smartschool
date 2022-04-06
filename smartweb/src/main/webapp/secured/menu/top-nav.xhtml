@@ -9,7 +9,7 @@
             <div class="navbar-logo">
                 <a href="#{application.contextPath}/secured/index.xhtml">
                     <!--<img class="img-fluid" src="{application.contextPath}/assets/images/logo.png" alt="Theme-Logo" />-->
-                    Smart School - Primary/JHS
+                    #{appSession.currentUser.school}
                 </a>
                 <a class="mobile-menu" id="mobile-collapse" href="#!">
                     <i class="feather icon-menu icon-toggle-right"></i>
@@ -42,7 +42,14 @@
                 <ul class="nav-right">
                     <li class="dropdown-primary dropdown">
                         <h:form>
-                            <h:commandLink class="btn btn-default shadow-sm btn-sm" action="#{userCommons.init()}" value="Refresh"/>
+                            <h:panelGrid columns="6" class="spaced-form">
+                                <h:selectOneMenu class="form-control form-control-sm" value="#{appSession.currentTerm}">
+                                    <f:selectItem itemLabel="#{msg.choose}"/>
+                                    <f:selectItems value="#{userCommons.academicTermList}"/>
+                                </h:selectOneMenu>
+                                <h:commandLink class="btn btn-light shadow-sm btn-sm" action="#{profileUpdateController.updateAcademicTerm()}" value="Set Active"/>
+                                <h:commandLink class="btn btn-default shadow-sm btn-sm" action="#{userCommons.init()}" value="Refresh"/>
+                            </h:panelGrid>
                         </h:form>
                     </li>
                     <li class="user-profile header-notification">
@@ -54,7 +61,7 @@
                                 <i class="feather icon-chevron-down"></i>
                             </div>
                             <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                               
+
                                 <li>
                                     <a href="#{application.contextPath}/secured/pages/profile-update.xhtml">
                                         <i class="feather icon-user"></i> Profile
@@ -67,7 +74,7 @@
 
                                     </a>
                                 </li>
-                                
+
                                 <li>
                                     <h:form>
                                         <i class="feather icon-log-out"></i>

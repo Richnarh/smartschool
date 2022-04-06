@@ -10,6 +10,7 @@ import com.khoders.smartschool.entities.AcademicLevel;
 import com.khoders.smartschool.entities.AcademicTerm;
 import com.khoders.smartschool.entities.ClassRoom;
 import com.khoders.smartschool.entities.Course;
+import com.khoders.smartschool.entities.ExamsParameter;
 import com.khoders.smartschool.entities.FeesType;
 import com.khoders.smartschool.entities.Student;
 import com.khoders.smartschool.entities.setup.UserAccount;
@@ -28,6 +29,9 @@ public class ConfigService
     
     public List<FeesType> getFeesTypeList(){
         return crudApi.getEm().createQuery("SELECT e FROM FeesType e ORDER BY e.createdDate ASC", FeesType.class).getResultList(); 
+    }
+    public List<ExamsParameter> getExamsParameterList(){
+        return crudApi.getEm().createQuery("SELECT e FROM ExamsParameter e ORDER BY e.createdDate ASC", ExamsParameter.class).getResultList(); 
     }
     public List<AcademicLevel> getAcademicLevelList(){
         return crudApi.getEm().createQuery("SELECT e FROM AcademicLevel e ORDER BY e.createdDate ASC", AcademicLevel.class).getResultList();

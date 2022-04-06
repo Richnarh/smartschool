@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition template="../templatesUI.xhtml">
+            <ui:define name="pageTitle">Exams Parameters</ui:define>
+            <ui:define name="subText">Create the overall score for the following</ui:define>
+            <ui:define name="pageContent">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h:form class="spaced-form" id="examsParameterForm">
+                            <h:panelGrid columns="2">
+                                <span>Overall Class Mark</span>
+                                <p:inputText required="true" value="#{examsParamController.examsParameter.overAllClassMrk}"/>
+                                
+                                <span>Class Mrk (%)</span>
+                                <p:inputText required="true" value="#{examsParamController.examsParameter.overallClassMrkPercentage}"/>
+                                
+                                <span>Overall Exams Mark</span>
+                                <p:inputText required="true" value="#{examsParamController.examsParameter.overallExamsMrk}"/>
+                                
+                                <span>Exams Mrk (%)</span>
+                                <p:inputText required="true" value="#{examsParamController.examsParameter.overallExamsMrkPercentage}"/>
+
+                                <p:commandButton action="#{examsParamController.clearExamsParameter()}" class="kbtn-default mx-3" value="#{msg.clear}" icon="#{msg.clear_icon}" immediate="true" update="@form"/>
+                                <p:commandButton action="#{examsParamController.saveExamsParameter()}" icon="#{msg.check_icon_circle}" class="kbtn-success" value="#{examsParamController.optionText}" update="@form,:examsParameterTable"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    <div class="col-md-8">
+                        <h:form id="examsParameterTable">
+                            <p:dataTable value="#{examsParamController.examsParameterList}" var="examsParameter" paginator="true" rows="12" paginatorPosition="bottom">
+                                <p:column headerText="Overall Class Mark">
+                                    <h:outputText value="#{examsParameter.overAllClassMrk}"/>
+                                </p:column>
+                                <p:column headerText="Class Mrk (%)">
+                                    <h:outputText value="#{examsParameter.overallClassMrkPercentage}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Overall Exams Mark">
+                                    <h:outputText value="#{examsParameter.overallExamsMrk}"/>
+                                </p:column>
+                                <p:column headerText="Exams Mrk (%)">
+                                    <h:outputText value="#{examsParameter.overallExamsMrkPercentage}"/>
+                                </p:column>
+                                <p:column headerText="#{msg.action}" style="width: 120px;" exportable="false">
+                                    <p:menuButton value="#{msg.manage}">
+                                        <p:menuitem action="#{examsParamController.editExamsParameter(examsParameter)}" icon="fa fa-edit" class="text-info" value="#{msg.edit}" immediate="true" update=":examsParameterForm"/>
+                                        <p:menuitem icon="fa fa-cog" class="text-info" value="Apply on staff" action="#{examsParamController.applyExamsParams(examsParameter)}" ajax="false"/>
+                                        <p:menuitem action="#{examsParamController.deleteExamsParameter(examsParameter)}" onclick="return confirm('#{msg.delete_message}')" icon="fa fa-remove" class="text-danger" value="#{msg.delete}" immediate="true" update="@form"/>
+                                    </p:menuButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

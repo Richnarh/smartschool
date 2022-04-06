@@ -36,13 +36,12 @@ public class ProfileUpdateController implements Serializable{
             if(appSession.getCurrentUser() != null)
             {
                 crudApi.save(appSession.getCurrentUser());
-                FacesContext.getCurrentInstance().addMessage(null, 
-                      new FacesMessage(FacesMessage.SEVERITY_INFO, Msg.SUCCESS_MESSAGE, null));
+                
+                Msg.info(Msg.SUCCESS_MESSAGE);
             }
             else
             {
-              FacesContext.getCurrentInstance().addMessage(null, 
-                      new FacesMessage(FacesMessage.SEVERITY_ERROR, Msg.DELETE_MESSAGE, null));  
+              Msg.error(Msg.DELETE_MESSAGE);
             }
         } 
         catch (Exception e) 
@@ -51,14 +50,16 @@ public class ProfileUpdateController implements Serializable{
         }
     }
     
-    
+    public void updateAcademicTerm(){
+        appSession.getCurrentUser().setAcademicTerm(appSession.getCurrentTerm());
+         crudApi.save(appSession.getCurrentUser());
+    }
        
     public void updatePassword()
     {
         if(!password.equals(confirmPassword))
         {
-            FacesContext.getCurrentInstance().addMessage(null, 
-                        new FacesMessage(FacesMessage.SEVERITY_ERROR, Msg.setMsg("Password do not match"), null));
+            Msg.error(Msg.setMsg("Password do not match"));
             return;
         }
         
@@ -68,8 +69,6 @@ public class ProfileUpdateController implements Serializable{
         {
             String msg = "This password is same as the old one, please use a new password";
             Msg.error(msg);
-//            FacesContext.getCurrentInstance().addMessage(null, 
-//                        new FacesMessage(FacesMessage.SEVERITY_ERROR, Msg.setMsg(msg), null));
             return;
         }
         
@@ -78,8 +77,7 @@ public class ProfileUpdateController implements Serializable{
         
         if(crudApi.save(appSession.getCurrentUser()) != null)
         {
-            FacesContext.getCurrentInstance().addMessage(null, 
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, Msg.setMsg("Password Reset successful!"), null));
+            Msg.info(Msg.setMsg("Password Reset successful!"));
         }
     }
 

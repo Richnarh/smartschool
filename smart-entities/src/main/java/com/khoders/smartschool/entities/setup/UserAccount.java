@@ -4,11 +4,16 @@ package com.khoders.smartschool.entities.setup;
 import com.khoders.resource.enums.AccessLevel;
 import com.khoders.resource.enums.Status;
 import com.khoders.resource.enums.Title;
+import com.khoders.smartschool.entities.AcademicTerm;
+import com.khoders.smartschool.entities.ExamsParameter;
 import com.khoders.smartschool.entities.RefNo;
+import com.khoders.smartschool.entities.School;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -22,6 +27,18 @@ public class UserAccount extends RefNo
 {
     @Column(name = "phone_number")
     private String phoneNumber;
+    
+    @JoinColumn(name = "exams_parameters", referencedColumnName = "id")
+    @ManyToOne
+    private ExamsParameter examsParameter;
+    
+    @JoinColumn(name = "academic_term", referencedColumnName = "id")
+    @ManyToOne
+    private AcademicTerm academicTerm;
+    
+    @JoinColumn(name = "school", referencedColumnName = "id")
+    @ManyToOne
+    private School school;
     
     @Column(name = "staff_no")
     private String staffNo;
@@ -190,6 +207,36 @@ public class UserAccount extends RefNo
     public void setStaffNo(String staffNo)
     {
         this.staffNo = staffNo;
+    }
+
+    public ExamsParameter getExamsParameter()
+    {
+        return examsParameter;
+    }
+
+    public void setExamsParameter(ExamsParameter examsParameter)
+    {
+        this.examsParameter = examsParameter;
+    }
+
+    public AcademicTerm getAcademicTerm()
+    {
+        return academicTerm;
+    }
+
+    public void setAcademicTerm(AcademicTerm academicTerm)
+    {
+        this.academicTerm = academicTerm;
+    }
+
+    public School getSchool()
+    {
+        return school;
+    }
+
+    public void setSchool(School school)
+    {
+        this.school = school;
     }
 
     @Override
